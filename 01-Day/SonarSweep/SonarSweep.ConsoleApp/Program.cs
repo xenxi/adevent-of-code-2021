@@ -6,7 +6,9 @@ var report = File.ReadAllText("input.txt");
 Print(report);
 
 var increment = new SinkingSpeedCalculator().Calculate(report);
-Print($"RESULT: {increment}", highlight: true);
+var incrementWithSliceWindows = new SinkingSpeedCalculator().Calculate(report, 3);
+Print($"RESULT PART 1: {increment}", highlight: true);
+Print($"RESULT PART 2: {incrementWithSliceWindows}", highlight: true);
 
 static void Print(string text, bool highlight = false)
 {
