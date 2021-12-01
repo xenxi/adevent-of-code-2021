@@ -4,10 +4,17 @@
     {
         public int CalculateIncrement(string report)
         {
-            var measurements = report.Split(' ');
-            if(measurements.Count() > 1)
-                return 1;
-            return 0;
+            var measurements = report.Split(' ').Select(strNum => (int.Parse(strNum)));
+            var increments = 0;
+            for (int i = 0; i < measurements.Count() - 1; i++)
+            {
+                var currentMeasurement = measurements.ElementAt(i);
+                var nextMeasurement = measurements.ElementAt(i + 1);
+                if(currentMeasurement < nextMeasurement)
+                    increments++;
+            }
+
+            return increments;
         }
     }
 }

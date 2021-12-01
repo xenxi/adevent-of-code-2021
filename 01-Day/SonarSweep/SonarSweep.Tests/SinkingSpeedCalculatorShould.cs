@@ -26,5 +26,15 @@ namespace SonarSweep.Tests
 
             depthIncreases.Should().Be(1);
         }
+        [Test]
+        public void be_0_when_the_depth_does_not_increase()
+        {
+            var calculator = new SinkingSpeedCalculator();
+            const string aGivenReport = "199 198 197";
+
+            var depthIncreases = calculator.CalculateIncrement(aGivenReport);
+
+            depthIncreases.Should().Be(0);
+        }
     }
 }
