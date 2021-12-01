@@ -1,15 +1,23 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace SonarSweep.Tests
 {
     [TestFixture]
     public class SinkingSpeedCalculatorShould
     {
+        private SinkingSpeedCalculator calculator => _calculator ?? throw new InvalidOperationException("not initialized");
+        private SinkingSpeedCalculator? _calculator;
+        [SetUp]
+        public void SetUp()
+        {
+            _calculator = new SinkingSpeedCalculator();
+        }
+
         [Test]
         public void be_0_when_report_has_a_single_measurement()
         {
-            var calculator = new SinkingSpeedCalculator();
             const string aGivenReport = "199";
 
             var depthIncreases = calculator.CalculateIncrement(aGivenReport);
@@ -19,7 +27,6 @@ namespace SonarSweep.Tests
         [Test]
         public void be_1_when_report_has_one_increment()
         {
-            var calculator = new SinkingSpeedCalculator();
             const string aGivenReport = "199 200";
 
             var depthIncreases = calculator.CalculateIncrement(aGivenReport);
@@ -29,7 +36,6 @@ namespace SonarSweep.Tests
         [Test]
         public void be_0_when_the_depth_does_not_increase()
         {
-            var calculator = new SinkingSpeedCalculator();
             const string aGivenReport = "199 198 197";
 
             var depthIncreases = calculator.CalculateIncrement(aGivenReport);
