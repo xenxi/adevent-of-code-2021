@@ -23,15 +23,9 @@
 
             for (int i = 0; i < measurements.Count; i++)
             {
-                var measure = measurements[i];
-                for (int slide = 1; slide < slideWindow && (i + slide < measurements.Count); slide++)
-                {
-                    var nextMeasure = measurements[i + slide];
-                    measure = measure + nextMeasure;
-                }
+                var measure = measurements.Skip(i).Take(slideWindow).Sum();
                 result.Add(measure);
             }
-
             return result;
         }
 
