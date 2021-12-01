@@ -3,7 +3,7 @@
     public class SinkingSpeedCalculator
     {
         private readonly ReportReader _reader = new ReportReader();
-        public int Calculate(string report)
+        public int Calculate(string report, int slideWindow = 0)
         {
             var measurements = _reader.ParseMeasurementsFrom(report);
             return CalculeSpeed(measurements);
