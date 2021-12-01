@@ -26,5 +26,14 @@ namespace SonarSweep.Tests
             measurements.Should().BeEmpty();
         }
 
+        [Test]
+        public void return_empty_list_when_report_not_conains_any_number()
+        {
+            var reader = new ReportReader();
+
+            var measurements = reader.ParseMeasurementsFrom("asdfasdf");
+
+            measurements.Should().BeEmpty();
+        }
     }
 }
