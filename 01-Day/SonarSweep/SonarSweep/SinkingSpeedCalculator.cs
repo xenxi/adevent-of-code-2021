@@ -2,10 +2,6 @@
 {
     public class SinkingSpeedCalculator
     {
-        public SinkingSpeedCalculator()
-        {
-        }
-
         public int CalculateIncrement(string report)
         {
             var measurements = report.Split(' ');
