@@ -24,6 +24,16 @@ namespace SonarSweep.Tests
 
             depthIncreases.Should().Be(0);
         }
+
+        [Test]
+        public void be_0_when_number_of_measurement_is_less_than_sliding_windows()
+        {
+            const string aGivenReport = "199 200";
+
+            var depthIncreases = calculator.Calculate(aGivenReport, slideWindow: 3);
+
+            depthIncreases.Should().Be(0);
+        }
         [Test]
         public void be_1_when_report_has_one_increment()
         {

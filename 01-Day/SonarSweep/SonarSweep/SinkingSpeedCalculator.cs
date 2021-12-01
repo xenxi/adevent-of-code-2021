@@ -6,6 +6,10 @@
         public int Calculate(string report, int slideWindow = 0)
         {
             var measurements = _reader.ParseMeasurementsFrom(report);
+
+            if(measurements.Count < slideWindow)
+                return 0;
+
             return CalculeSpeed(measurements);
         }
 
