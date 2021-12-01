@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarSweep", "SonarSweep\SonarSweep.csproj", "{AC669C33-9ED4-494D-BD0C-24EB8ECC09C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day1", "Day1", "{066FA42F-7C93-4887-AC84-F8E1F670EE77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarSweep.Tests", "SonarSweep.Tests\SonarSweep.Tests.csproj", "{A8C02BBD-0549-401F-A3AD-326F42196826}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC669C33-9ED4-494D-BD0C-24EB8ECC09C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC669C33-9ED4-494D-BD0C-24EB8ECC09C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC669C33-9ED4-494D-BD0C-24EB8ECC09C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC669C33-9ED4-494D-BD0C-24EB8ECC09C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C02BBD-0549-401F-A3AD-326F42196826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C02BBD-0549-401F-A3AD-326F42196826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C02BBD-0549-401F-A3AD-326F42196826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C02BBD-0549-401F-A3AD-326F42196826}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC669C33-9ED4-494D-BD0C-24EB8ECC09C6} = {066FA42F-7C93-4887-AC84-F8E1F670EE77}
+		{A8C02BBD-0549-401F-A3AD-326F42196826} = {066FA42F-7C93-4887-AC84-F8E1F670EE77}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E1EB198-D99E-4719-B68C-C024FBC7E03B}
+	EndGlobalSection
+EndGlobal
