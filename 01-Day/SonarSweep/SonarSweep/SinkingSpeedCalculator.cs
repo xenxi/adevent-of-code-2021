@@ -8,7 +8,7 @@
 
         public int CalculateIncrement(string aGivenReport)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
