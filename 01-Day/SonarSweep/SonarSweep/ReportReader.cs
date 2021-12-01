@@ -6,8 +6,13 @@ namespace SonarSweep
     {
         public IList<int> ParseMeasurementsFrom(string? report)
         {
-            var matches = Regex.Matches(report ?? String.Empty, @"\d+").Where(match => match.Success).Select(match => match.Value);
-            return matches.Select(match => int.Parse(match)).ToList();
+            var strNumbers = GetStrNumbers(report ?? string.Empty);
+            return strNumbers.Select(match => int.Parse(match)).ToList();
         }
+
+        private static IEnumerable<string> GetStrNumbers(string report) 
+            => Regex.Matches(report, @"\d+")
+                .Where(match => match.Success)
+                .Select(match => match.Value);
     }
 }
