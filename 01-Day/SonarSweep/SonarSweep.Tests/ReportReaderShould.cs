@@ -10,9 +10,8 @@ namespace SonarSweep.Tests
         public void return_empty_list_when_report_is_empty()
         {
             var reader = new ReportReader();
-            var aGivenEmptyReport = string.Empty;
 
-            var measurements = reader.ParseMeasurementsFrom(aGivenEmptyReport);
+            var measurements = reader.ParseMeasurementsFrom(string.Empty);
             
             measurements.Should().BeEmpty();
         }
