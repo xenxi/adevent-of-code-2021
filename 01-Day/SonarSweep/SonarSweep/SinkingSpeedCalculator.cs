@@ -6,9 +6,9 @@
         {
         }
 
-        public int CalculateIncrement(string aGivenReport)
+        public int CalculateIncrement(string report)
         {
-            var measurements = aGivenReport.Split(' ');
+            var measurements = report.Split(' ');
             if(measurements.Count() > 1)
                 return 1;
             return 0;
