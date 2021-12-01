@@ -2,7 +2,7 @@
 {
     public class SinkingSpeedCalculator
     {
-        public int CalculateIncrement(string report)
+        public int Calculate(string report)
         {
             var measurements = ParseMeasurementsFrom(report);
             return CalculeSpeed(measurements);

@@ -20,7 +20,7 @@ namespace SonarSweep.Tests
         {
             const string aGivenReport = "199";
 
-            var depthIncreases = calculator.CalculateIncrement(aGivenReport);
+            var depthIncreases = calculator.Calculate(aGivenReport);
 
             depthIncreases.Should().Be(0);
         }
@@ -29,7 +29,7 @@ namespace SonarSweep.Tests
         {
             const string aGivenReport = "199 200";
 
-            var depthIncreases = calculator.CalculateIncrement(aGivenReport);
+            var depthIncreases = calculator.Calculate(aGivenReport);
 
             depthIncreases.Should().Be(1);
         }
@@ -38,7 +38,7 @@ namespace SonarSweep.Tests
         {
             const string aGivenReport = "199 198 197";
 
-            var depthIncreases = calculator.CalculateIncrement(aGivenReport);
+            var depthIncreases = calculator.Calculate(aGivenReport);
 
             depthIncreases.Should().Be(0);
         }
