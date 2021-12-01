@@ -19,20 +19,19 @@
 
         private IList<int> Slide(IList<int> measurements, int slideWindow)
         {
-            var result = new List<int>();
-
-            for (int i = 0; i < measurements.Count; i++)
-            {
-                var measure = measurements.Skip(i).Take(slideWindow).Sum();
-                result.Add(measure);
-            }
-            return result;
+            var index = 0;
+            return measurements
+                .Select(measurement 
+                    => measurements
+                        .Skip(index++)
+                        .Take(slideWindow).Sum())
+                .ToList();
         }
 
         private static int CalculeSpeed(IList<int> measurements)
         {
             var increments = 0;
-            for (int i = 0; i < measurements.Count() - 1; i++)
+            for (int i = 0; i < measurements.Count - 1; i++)
             {
                 var currentMeasurement = measurements.ElementAt(i);
                 var nextMeasurement = measurements.ElementAt(i + 1);
