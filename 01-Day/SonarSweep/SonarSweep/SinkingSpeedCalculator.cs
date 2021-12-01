@@ -2,9 +2,10 @@
 {
     public class SinkingSpeedCalculator
     {
+        private readonly ReportReader _reader = new ReportReader();
         public int Calculate(string report)
         {
-            var measurements = ParseMeasurementsFrom(report);
+            var measurements = _reader.ParseMeasurementsFrom(report);
             return CalculeSpeed(measurements);
         }
 
@@ -22,6 +23,6 @@
             return increments;
         }
 
-        private static IList<int> ParseMeasurementsFrom(string report) => report.Split(' ').Select(strNum => (int.Parse(strNum))).ToList();
+       
     }
 }
