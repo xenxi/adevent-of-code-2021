@@ -17,5 +17,15 @@ namespace SonarSweep.Tests
             measurements.Should().BeEmpty();
         }
 
+        [Test]
+        public void return_empty_list_when_report_is_null()
+        {
+            var reader = new ReportReader();
+
+            var measurements = reader.ParseMeasurementsFrom(null);
+
+            measurements.Should().BeEmpty();
+        }
+
     }
 }
