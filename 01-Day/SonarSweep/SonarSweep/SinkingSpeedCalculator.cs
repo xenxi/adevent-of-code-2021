@@ -9,8 +9,30 @@
 
             if(measurements.Count <= slideWindow)
                 return 0;
-
+            if (slideWindow > 0)
+            {
+                var slideMeasurements = Slide(measurements, slideWindow);
+                return CalculeSpeed(slideMeasurements);
+            }
             return CalculeSpeed(measurements);
+        }
+
+        private IList<int> Slide(IList<int> measurements, int slideWindow)
+        {
+            var result = new List<int>();
+
+            for (int i = 0; i < measurements.Count; i++)
+            {
+                var measure = measurements[i];
+                for (int slide = 1; slide < slideWindow && (i + slide < measurements.Count); slide++)
+                {
+                    var nextMeasure = measurements[i + slide];
+                    measure = measure + nextMeasure;
+                }
+                result.Add(measure);
+            }
+
+            return result;
         }
 
         private static int CalculeSpeed(IList<int> measurements)

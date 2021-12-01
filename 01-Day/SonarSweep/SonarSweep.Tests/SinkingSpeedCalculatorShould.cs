@@ -73,5 +73,15 @@ namespace SonarSweep.Tests
             depthIncreases.Should().Be(0);
         }
 
+        [Test]
+        public void be_5_when_the_depth_is_increased_5_times_in_windows_of_3()
+        {
+            const string aGivenReport = "199 200 208 210 200 207 240 269 260 263 ";
+
+            var depthIncreases = calculator.Calculate(aGivenReport, slideWindow: 3);
+
+            depthIncreases.Should().Be(5);
+        }
+
     }
 }
