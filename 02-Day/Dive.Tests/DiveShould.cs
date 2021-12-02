@@ -50,5 +50,17 @@ namespace Dive.Tests
 
             locator.Should().Be(expectedLocator);
         }
+
+        [Test]
+        public void move_up_decreases_the_depth()
+        {
+            dive.Down(2);
+            dive.Up(1);
+
+            var locator = dive.BroadcastLocator();
+
+            locator.Should().Be(1);
+        }
+
     }
 }

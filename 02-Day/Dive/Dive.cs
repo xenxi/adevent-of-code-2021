@@ -22,5 +22,10 @@
         {
             _locator = step;
         }
+
+        public void Up(int step)
+        {
+            _locator = _locator - step;
+        }
     }
 }
