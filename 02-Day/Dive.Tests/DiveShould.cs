@@ -11,7 +11,7 @@ namespace Dive.Tests
         {
             var dive = new Dive();
 
-            var locator = dive.BroadcastLocation();
+            var locator = dive.BroadcastLocator();
 
             locator.Should().Be(0);
         }
