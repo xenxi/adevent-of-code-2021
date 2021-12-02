@@ -62,5 +62,19 @@ namespace Dive.Tests
             locator.Should().Be(1);
         }
 
+        [Test]
+        public void calcule_locator_as_the_product_of_the_depth_and_the_horizontal_position()
+        {
+            dive.Forward(5);
+            dive.Down(5);
+            dive.Forward(8);
+            dive.Up(3);
+            dive.Down(8);
+            dive.Forward(2);
+
+            var locator = dive.BroadcastLocator();
+
+            locator.Should().Be(150);
+        }
     }
 }
