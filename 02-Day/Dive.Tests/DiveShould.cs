@@ -29,5 +29,19 @@ namespace Dive.Tests
 
             locator.Should().Be(expectedLocator);
         }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(44, 44)]
+        public void move_down(int step, int expectedLocator)
+        {
+            var dive = new Dive();
+            dive.Down(step);
+
+            var locator = dive.BroadcastLocator();
+
+            locator.Should().Be(expectedLocator);
+        }
     }
 }

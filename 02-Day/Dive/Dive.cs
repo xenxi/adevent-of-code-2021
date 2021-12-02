@@ -17,5 +17,10 @@
         {
             _locator = step;
         }
+
+        public void Down(int step)
+        {
+            _locator = step;
+        }
     }
 }
