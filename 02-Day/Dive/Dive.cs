@@ -15,7 +15,7 @@ namespace Dive
 
         public int BroadcastLocation()
         {
-            throw new NotImplementedException();
+           return 0;
         }
     }
 }
