@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dive
+﻿namespace Dive
 {
     public class Dive
     {
+        private int _locator = 0;
         public void ExecuteComands(string aGivenCommands)
         {
             throw new NotImplementedException();
@@ -15,7 +10,12 @@ namespace Dive
 
         public int BroadcastLocator()
         {
-           return 0;
+           return _locator;
+        }
+
+        public void Forward(int step)
+        {
+            _locator = 1;
         }
     }
 }
