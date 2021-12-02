@@ -19,8 +19,6 @@ namespace Dive.Tests
         [Test]
         public void initialize_with_locator_0()
         {
-            var dive = new Dive();
-
             var locator = dive.BroadcastLocator();
 
             locator.Should().Be(0);
@@ -32,7 +30,6 @@ namespace Dive.Tests
         [TestCase(44, 44)]
         public void move_forward(int step, int expectedLocator)
         {
-            var dive = new Dive();
             dive.Forward(step);
 
             var locator = dive.BroadcastLocator();
