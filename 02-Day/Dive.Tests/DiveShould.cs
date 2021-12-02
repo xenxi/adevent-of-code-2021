@@ -31,6 +31,7 @@ namespace Dive.Tests
         public void move_forward(int step, int expectedLocator)
         {
             dive.Forward(step);
+            dive.Down(1);
 
             var locator = dive.BroadcastLocator();
 
@@ -43,7 +44,7 @@ namespace Dive.Tests
         [TestCase(44, 44)]
         public void move_down(int step, int expectedLocator)
         {
-            
+            dive.Forward(1);
             dive.Down(step);
 
             var locator = dive.BroadcastLocator();
@@ -56,6 +57,7 @@ namespace Dive.Tests
         {
             dive.Down(2);
             dive.Up(1);
+            dive.Forward(1);
 
             var locator = dive.BroadcastLocator();
 
