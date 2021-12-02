@@ -16,26 +16,6 @@ namespace Dive.Tests
             locator.Should().Be(0);
         }
 
-        [Test]
-        public void move_one_step_forward()
-        {
-            var dive = new Dive();
-            dive.Forward(1);
-
-            var locator = dive.BroadcastLocator();
-
-            locator.Should().Be(1);
-        }
-        [Test]
-        public void move_two_steps_forward()
-        {
-            var dive = new Dive();
-            dive.Forward(2);
-
-            var locator = dive.BroadcastLocator();
-
-            locator.Should().Be(2);
-        }
         [TestCase(1, 1)]
         [TestCase(2, 2)]
         [TestCase(3, 3)]
