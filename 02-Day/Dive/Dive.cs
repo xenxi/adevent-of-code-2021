@@ -15,7 +15,7 @@
 
         public void Forward(int step)
         {
-            _locator = 1;
+            _locator = step;
         }
     }
 }
