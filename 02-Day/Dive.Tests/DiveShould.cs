@@ -1,11 +1,21 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace Dive.Tests
 {
     [TestFixture]
     public class DiveShould
     {
+        private Dive dive => _dive ?? throw new InvalidOperationException("not initialized");
+        private Dive? _dive;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _dive = new Dive();
+        }
+
         [Test]
         public void initialize_with_locator_0()
         {
@@ -36,7 +46,7 @@ namespace Dive.Tests
         [TestCase(44, 44)]
         public void move_down(int step, int expectedLocator)
         {
-            var dive = new Dive();
+            
             dive.Down(step);
 
             var locator = dive.BroadcastLocator();
