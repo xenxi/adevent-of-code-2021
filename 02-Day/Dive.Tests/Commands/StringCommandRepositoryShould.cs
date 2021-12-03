@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
-using Dive.Commands;
+﻿using Dive.Commands;
 using FluentAssertions;
+using NUnit.Framework;
 
 namespace Dive.Tests.Commands
 {
@@ -25,7 +25,7 @@ namespace Dive.Tests.Commands
         [TestCase("forward 15", 15)]
         [TestCase("forwArd 23", 23)]
         [TestCase("FORWARD 88", 88)]
-        public void return_forward_command(string input, int expectedStep)
+        public void return_up_command(string input, int expectedStep)
         {
             var repository = new StringCommandRepository(input);
 
