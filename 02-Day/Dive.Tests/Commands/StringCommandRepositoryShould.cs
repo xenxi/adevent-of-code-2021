@@ -1,6 +1,7 @@
 ﻿using Dive.Commands;
 using FluentAssertions;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Dive.Tests.Commands
 {
@@ -70,6 +71,25 @@ namespace Dive.Tests.Commands
 
             var expectedCommand = new MoveCommandParam(MoveCommandType.Up, expectedStep);
             commands.Should().OnlyContain(c => c == expectedCommand);
+        }
+
+        [Test]
+        public void return_multiple_commands()
+        {
+            var aGivenInput = "forward 5\r\ndown 5\r\nforward 8\r\nup 3\r\ndown 8\r\nforward 2";
+            var repository = new StringCommandRepository(aGivenInput);
+
+            var commands = repository.GetAll();
+
+            var expectedMovementCommands = new List<MoveCommandParam> {
+                new MoveCommandParam(MoveCommandType.Forward, 5),
+                new MoveCommandParam(MoveCommandType.Down, 5),
+                new MoveCommandParam(MoveCommandType.Forward, 8),
+                new MoveCommandParam(MoveCommandType.Up, 3),
+                new MoveCommandParam(MoveCommandType.Down, 8),
+                new MoveCommandParam(MoveCommandType.Forward, 2),
+            };
+            commands.Should().ContainInOrder(expectedMovementCommands);
         }
     }
 }

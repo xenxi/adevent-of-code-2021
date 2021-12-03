@@ -14,11 +14,31 @@ namespace Dive.Commands
         public IList<MoveCommandParam> GetAll()
         {
             var moveCommandParams = new List<MoveCommandParam>();
-            MatchForward(moveCommandParams);
-            MatchUp(moveCommandParams);
-            MatchDown(moveCommandParams);
+
+            var matches = Regex.Matches(_rawData.ToLower(), @"((forward|up|down)(\s+)?\d+)");
+
+            foreach (Match match in matches) 
+            {
+                var type = ReadType(match.Value);
+                var step = ReadStep(match.Value);
+                moveCommandParams.Add(new MoveCommandParam(type, step));
+            }    
 
             return moveCommandParams;
+        }
+
+        private MoveCommandType ReadType(string value)
+        {
+            if (value.Contains("forward"))
+                return MoveCommandType.Forward;
+
+            if(value.Contains("up"))
+                return MoveCommandType.Up;
+
+            if(value.Contains("down"))
+                return MoveCommandType.Down;
+
+            throw new InvalidOperationException("Invalid command");
         }
 
         private void MatchDown(List<MoveCommandParam> moveCommandParams)
