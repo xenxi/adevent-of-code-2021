@@ -18,23 +18,28 @@ namespace Dive
             var dive = new Dive();
             var commands = _repository.GetAll();
 
-            foreach (var command in commands) 
+            foreach (var command in commands)
             {
-                switch (command.Type)
-                {
-                    case MoveCommandType.Forward:
-                        dive.Forward(command.Step);
-                        break;
-                    case MoveCommandType.Down:
-                        dive.Down(command.Step);
-                        break;
-                    case MoveCommandType.Up:
-                        dive.Up(command.Step);
-                        break;
-                }
+                ProcessCommand(dive, command);
             }
 
             _notificator.Notify(dive.BroadcastLocator());
+        }
+
+        private static void ProcessCommand(Dive dive, MoveCommandParam command)
+        {
+            switch (command.Type)
+            {
+                case MoveCommandType.Forward:
+                    dive.Forward(command.Step);
+                    break;
+                case MoveCommandType.Down:
+                    dive.Down(command.Step);
+                    break;
+                case MoveCommandType.Up:
+                    dive.Up(command.Step);
+                    break;
+            }
         }
     }
 }
