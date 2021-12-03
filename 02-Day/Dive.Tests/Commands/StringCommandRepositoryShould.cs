@@ -7,6 +7,21 @@ namespace Dive.Tests.Commands
     [TestFixture]
     public class StringCommandRepositoryShould
     {
+        [TestCase("down 1", 1)]
+        [TestCase("down 4", 4)]
+        [TestCase("down 15", 15)]
+        [TestCase("dOwn 23", 23)]
+        [TestCase("DOWN 88", 88)]
+        public void return_down_command(string input, int expectedStep)
+        {
+            var repository = new StringCommandRepository(input);
+
+            var commands = repository.GetAll();
+
+            var expectedCommand = new MoveCommandParam(MoveCommandType.Down, expectedStep);
+            commands.Should().OnlyContain(c => c == expectedCommand);
+        }
+
         [TestCase("")]
         [TestCase(null)]
         [TestCase("asdf tes 3")]

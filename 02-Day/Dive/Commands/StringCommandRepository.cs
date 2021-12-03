@@ -16,8 +16,20 @@ namespace Dive.Commands
             var moveCommandParams = new List<MoveCommandParam>();
             MatchForward(moveCommandParams);
             MatchUp(moveCommandParams);
+            MatchDown(moveCommandParams);
 
             return moveCommandParams;
+        }
+
+        private void MatchDown(List<MoveCommandParam> moveCommandParams)
+        {
+            var maches = Regex.Match(_rawData, @"(down\s+\d+)", RegexOptions.IgnoreCase);
+
+            if (maches.Success)
+            {
+                var step = int.Parse(maches.Value.Split(" ", StringSplitOptions.RemoveEmptyEntries).Last());
+                moveCommandParams.Add(new MoveCommandParam(MoveCommandType.Down, step));
+            }
         }
 
         private void MatchForward(List<MoveCommandParam> moveCommandParams)
