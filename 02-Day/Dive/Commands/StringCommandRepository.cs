@@ -1,16 +1,28 @@
-﻿namespace Dive.Commands
+﻿using System.Text.RegularExpressions;
+
+namespace Dive.Commands
 {
     public class StringCommandRepository : CommandRepository
     {
+        private readonly string _rawData;
 
-
-        public StringCommandRepository(string? empty)
+        public StringCommandRepository(string? data)
         {
+            _rawData = data ?? string.Empty;
         }
 
         public IList<MoveCommandParam> GetAll()
         {
-            return new List<MoveCommandParam>();
+            var moveCommandParams = new List<MoveCommandParam>();
+            var maches = Regex.Match(_rawData, @"(forward\s+\d+)", RegexOptions.IgnoreCase);
+
+            if (maches.Success)
+            {
+                var step = int.Parse(maches.Value.Split(" ", StringSplitOptions.RemoveEmptyEntries).Last());
+                moveCommandParams.Add(new MoveCommandParam(MoveCommandType.Forward, step));
+            }
+
+            return moveCommandParams;
         }
     }
 }

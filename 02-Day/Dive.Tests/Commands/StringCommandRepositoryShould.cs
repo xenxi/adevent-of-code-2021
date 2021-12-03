@@ -19,5 +19,20 @@ namespace Dive.Tests.Commands
 
             repository.GetAll().Should().BeEmpty();
         }
+
+        [TestCase("forward 1", 1)]
+        [TestCase("forward 4", 4)]
+        [TestCase("forward 15", 15)]
+        [TestCase("forwArd 23", 23)]
+        [TestCase("FORWARD 88", 88)]
+        public void return_forward_command(string input, int expectedStep)
+        {
+            var repository = new StringCommandRepository(input);
+
+            var commands = repository.GetAll();
+
+            var expectedCommand = new MoveCommandParam(MoveCommandType.Forward, expectedStep);
+            commands.Should().OnlyContain(c => c == expectedCommand);
+        }
     }
 }
