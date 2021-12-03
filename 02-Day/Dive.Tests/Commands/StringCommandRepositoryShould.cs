@@ -10,6 +10,9 @@ namespace Dive.Tests.Commands
         [TestCase("")]
         [TestCase(null)]
         [TestCase("asdf tes 3")]
+        [TestCase("forward ")]
+        [TestCase("down")]
+        [TestCase("up")]
         public void return_empty_list_of_commands_when_input_not_contains_any_valid_command(string input)
         {
             var repository = new StringCommandRepository(input);
