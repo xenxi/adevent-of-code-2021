@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Dive.Tests
 {
     [TestFixture]
-    public class DiveFeature
+    public class InstructionSenderFeature
     {
         [Test]
         public void move()
