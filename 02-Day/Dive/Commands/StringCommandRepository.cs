@@ -4,7 +4,7 @@
     {
 
 
-        public StringCommandRepository(string empty)
+        public StringCommandRepository(string? empty)
         {
         }
 

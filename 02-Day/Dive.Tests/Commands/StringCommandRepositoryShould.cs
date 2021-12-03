@@ -15,5 +15,13 @@ namespace Dive.Tests.Commands
             repository.GetAll().Should().BeEmpty();
         }
 
+        [Test]
+        public void return_empty_list_of_commands_when_input_is_null()
+        {
+            var repository = new StringCommandRepository(null);
+
+            repository.GetAll().Should().BeEmpty();
+        }
+
     }
 }
