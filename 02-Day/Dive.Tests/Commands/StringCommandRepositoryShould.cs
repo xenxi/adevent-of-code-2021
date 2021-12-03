@@ -25,13 +25,28 @@ namespace Dive.Tests.Commands
         [TestCase("forward 15", 15)]
         [TestCase("forwArd 23", 23)]
         [TestCase("FORWARD 88", 88)]
-        public void return_up_command(string input, int expectedStep)
+        public void return_forward_command(string input, int expectedStep)
         {
             var repository = new StringCommandRepository(input);
 
             var commands = repository.GetAll();
 
             var expectedCommand = new MoveCommandParam(MoveCommandType.Forward, expectedStep);
+            commands.Should().OnlyContain(c => c == expectedCommand);
+        }
+
+        [TestCase("up 1", 1)]
+        [TestCase("up 4", 4)]
+        [TestCase("up 15", 15)]
+        [TestCase("Up 23", 23)]
+        [TestCase("UP 88", 88)]
+        public void return_up_command(string input, int expectedStep)
+        {
+            var repository = new StringCommandRepository(input);
+
+            var commands = repository.GetAll();
+
+            var expectedCommand = new MoveCommandParam(MoveCommandType.Up, expectedStep);
             commands.Should().OnlyContain(c => c == expectedCommand);
         }
     }
