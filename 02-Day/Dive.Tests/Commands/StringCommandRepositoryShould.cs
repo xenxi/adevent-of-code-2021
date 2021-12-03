@@ -9,6 +9,9 @@ namespace Dive.Tests.Commands
     {
         [TestCase("down 1", 1)]
         [TestCase("down 4", 4)]
+        [TestCase("down 4", 4)]
+        [TestCase("down4", 4)]
+        [TestCase("down    4", 4)]
         [TestCase("down 15", 15)]
         [TestCase("dOwn 23", 23)]
         [TestCase("DOWN 88", 88)]
@@ -37,6 +40,8 @@ namespace Dive.Tests.Commands
 
         [TestCase("forward 1", 1)]
         [TestCase("forward 4", 4)]
+        [TestCase("forward4", 4)]
+        [TestCase("forward   4", 4)]
         [TestCase("forward 15", 15)]
         [TestCase("forwArd 23", 23)]
         [TestCase("FORWARD 88", 88)]
@@ -53,6 +58,8 @@ namespace Dive.Tests.Commands
         [TestCase("up 1", 1)]
         [TestCase("up 4", 4)]
         [TestCase("up 15", 15)]
+        [TestCase("up15", 15)]
+        [TestCase("up   15", 15)]
         [TestCase("Up 23", 23)]
         [TestCase("UP 88", 88)]
         public void return_up_command(string input, int expectedStep)
