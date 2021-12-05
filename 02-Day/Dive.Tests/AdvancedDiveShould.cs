@@ -62,6 +62,18 @@ namespace Dive.Tests
             dive.Horizontal.Should().Be(expectedHorizontalPosition);
         }
 
+        [TestCase(1, 0, 0)]
+        [TestCase(2, 1, 2)]
+        [TestCase(3, 3, 9)]
+        public void move_forward_increases_the_depth_by_aim_multiplied_by_step(int step, int aim, int expectedDepth)
+        {
+            dive.Down(aim);
+
+            dive.Forward(step);
+
+            dive.Depth.Should().Be(expectedDepth);
+        }
+
         [SetUp]
         public void SetUp()
         {

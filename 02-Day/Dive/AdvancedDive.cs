@@ -12,6 +12,7 @@
         public override void Forward(int step)
         {
             Horizontal += step;
+            Depth += (step * Aim);
         }
 
         public override void Up(int step)
