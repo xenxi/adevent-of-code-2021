@@ -11,7 +11,7 @@
 
         public override void Forward(int step)
         {
-
+            Horizontal += step;
         }
 
         public override void Up(int step)

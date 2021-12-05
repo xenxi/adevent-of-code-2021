@@ -32,7 +32,7 @@ namespace Dive.Tests
         [TestCase(2, 2)]
         [TestCase(3, 3)]
         [TestCase(44, 44)]
-        public void move_down_increase_the_aim(int step, int expectedAim)
+        public void move_down_increases_the_aim(int step, int expectedAim)
         {
             dive.Down(step);
 
@@ -49,6 +49,17 @@ namespace Dive.Tests
             dive.Up(step);
 
             dive.Aim.Should().Be(expectedAim);
+        }
+
+        [TestCase(1, 1)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(44, 44)]
+        public void move_forward_increases_the_horizontal_position(int step, int expectedHorizontalPosition)
+        {
+            dive.Forward(step);
+
+            dive.Horizontal.Should().Be(expectedHorizontalPosition);
         }
 
         [SetUp]
