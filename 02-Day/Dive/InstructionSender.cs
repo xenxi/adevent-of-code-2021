@@ -15,7 +15,7 @@ namespace Dive
 
         public void Send()
         {
-            var dive = new Dive();
+            var dive = new BasicDive();
             var commands = _repository.GetAll();
 
             foreach (var command in commands)
@@ -26,7 +26,7 @@ namespace Dive
             _notificator.Notify(dive.BroadcastLocator());
         }
 
-        private static void ProcessCommand(Dive dive, MoveCommandParam command)
+        private static void ProcessCommand(BasicDive dive, MoveCommandParam command)
         {
             switch (command.Type)
             {

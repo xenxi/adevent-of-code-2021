@@ -5,15 +5,15 @@ using System;
 namespace Dive.Tests
 {
     [TestFixture]
-    public class DiveShould
+    public class BasicDiveShould
     {
-        private Dive dive => _dive ?? throw new InvalidOperationException("not initialized");
-        private Dive? _dive;
+        private BasicDive dive => _dive ?? throw new InvalidOperationException("not initialized");
+        private BasicDive? _dive;
 
         [SetUp]
         public void SetUp()
         {
-            _dive = new Dive();
+            _dive = new BasicDive();
         }
 
         [Test]

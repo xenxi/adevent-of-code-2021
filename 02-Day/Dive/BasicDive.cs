@@ -1,6 +1,6 @@
 ﻿namespace Dive
 {
-    public class Dive
+    public class BasicDive
     {
         private int _depth = 0;
         private int _horizontal = 0;
