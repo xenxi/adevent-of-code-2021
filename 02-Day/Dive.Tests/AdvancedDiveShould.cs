@@ -22,6 +22,12 @@ namespace Dive.Tests
             dive.Depth.Should().Be(0);
         }
 
+        [Test]
+        public void has_0_horizontal_when_created()
+        {
+            dive.Horizontal.Should().Be(0);
+        }
+
         [TestCase(1, 1)]
         [TestCase(2, 2)]
         [TestCase(3, 3)]
