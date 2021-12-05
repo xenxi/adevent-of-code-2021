@@ -1,27 +1,20 @@
 ﻿namespace Dive
 {
-    public class BasicDive
+    public class BasicDive : Dive
     {
-        private int _depth = 0;
-        private int _horizontal = 0;
-
-        public int BroadcastLocator()
+        public override void Down(int step)
         {
-            return _horizontal * _depth;
+            depth += step;
         }
 
-        public void Down(int step)
+        public override void Forward(int step)
         {
-            _depth += step;
+            horizontal += step;
         }
 
-        public void Forward(int step)
+        public override void Up(int step)
         {
-            _horizontal += step;
-        }
-        public void Up(int step)
-        {
-            _depth -= step;
+            depth -= step;
         }
     }
 }
