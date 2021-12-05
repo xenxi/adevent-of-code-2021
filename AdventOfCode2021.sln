@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dive.Tests", "02-Day\Dive.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dive.ConsoleApp", "02-Day\Dive.ConsoleApp\Dive.ConsoleApp.csproj", "{C2145FFD-23EA-4063-AF8F-203F04DFCFFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dive.ConsoleApp.Tests", "02-Day\Dive.ConsoleApp.Tests\Dive.ConsoleApp.Tests.csproj", "{A87C1EB9-9DFC-49C5-8DFC-1A2B3EF25E0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dive.ConsoleApp.Tests", "02-Day\Dive.ConsoleApp.Tests\Dive.ConsoleApp.Tests.csproj", "{A87C1EB9-9DFC-49C5-8DFC-1A2B3EF25E0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Day", "03-Day", "{76DB64AF-2F24-4AE3-BAA0-65AF99139615}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
