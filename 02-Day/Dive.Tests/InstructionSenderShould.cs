@@ -22,6 +22,7 @@ namespace Dive.Tests
         [Test]
         public void move_dive()
         {
+            var aGivenDive = new BasicDive();
             var aGivenMovementCommands = new List<MoveCommandParam> { 
                 new MoveCommandParam(MoveCommandType.Forward, 5),
                 new MoveCommandParam(MoveCommandType.Down, 5),
@@ -32,7 +33,7 @@ namespace Dive.Tests
             };
             ShouldSearchForCommands(aGivenMovementCommands);
 
-            _sender.Send();
+            _sender.Send(aGivenDive);
 
             _notificator.Received(1).Notify(150);
         }

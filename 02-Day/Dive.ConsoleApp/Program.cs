@@ -10,7 +10,7 @@ Print(report);
 
 var sender = BuildSender(report);
 
-sender.Send();
+sender.Send(new BasicDive());
 
 static InstructionSender BuildSender(string commands)
 {

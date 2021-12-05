@@ -4,18 +4,16 @@ namespace Dive
 {
     public class InstructionSender
     {
-        private readonly CommandRepository _repository;
         private readonly LocatorNotificator _notificator;
-
-        public InstructionSender(CommandRepository repository, LocatorNotificator notificator) 
+        private readonly CommandRepository _repository;
+        public InstructionSender(CommandRepository repository, LocatorNotificator notificator)
         {
             _repository = repository;
             _notificator = notificator;
         }
 
-        public void Send()
+        public void Send(Dive dive)
         {
-            var dive = new BasicDive();
             var commands = _repository.GetAll();
 
             foreach (var command in commands)
@@ -26,16 +24,18 @@ namespace Dive
             _notificator.Notify(dive.BroadcastLocator());
         }
 
-        private static void ProcessCommand(BasicDive dive, MoveCommandParam command)
+        private static void ProcessCommand(Dive dive, MoveCommandParam command)
         {
             switch (command.Type)
             {
                 case MoveCommandType.Forward:
                     dive.Forward(command.Step);
                     break;
+
                 case MoveCommandType.Down:
                     dive.Down(command.Step);
                     break;
+
                 case MoveCommandType.Up:
                     dive.Up(command.Step);
                     break;
