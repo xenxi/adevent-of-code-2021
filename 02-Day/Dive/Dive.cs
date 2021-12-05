@@ -2,12 +2,12 @@
 {
     public abstract class Dive
     {
-        protected int depth = 0;
-        protected int horizontal = 0;
+        public int Depth { get; protected set; } = 0;
+        public int Horizontal { get; protected set; } = 0;
 
         public int BroadcastLocator()
         {
-            return horizontal * depth;
+            return Horizontal * Depth;
         }
 
         public abstract void Down(int step);

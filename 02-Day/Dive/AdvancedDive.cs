@@ -1,20 +1,21 @@
 ﻿namespace Dive
 {
-    public sealed class BasicDive : Dive
+    public sealed class AdvancedDive : Dive
     {
+        public int Aim { get; private set; } = 0;
+
         public override void Down(int step)
         {
-            Depth += step;
+            Aim += step;
         }
 
         public override void Forward(int step)
         {
-            Horizontal += step;
+
         }
 
         public override void Up(int step)
         {
-            Depth -= step;
         }
     }
 }
