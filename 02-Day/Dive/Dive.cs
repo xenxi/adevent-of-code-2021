@@ -3,11 +3,11 @@
     public class Dive
     {
         private int _depth = 0;
-        private int _locator = 0;
+        private int _horizontal = 0;
 
         public int BroadcastLocator()
         {
-            return _locator * _depth;
+            return _horizontal * _depth;
         }
 
         public void Down(int step)
@@ -17,7 +17,7 @@
 
         public void Forward(int step)
         {
-            _locator += step;
+            _horizontal += step;
         }
         public void Up(int step)
         {
