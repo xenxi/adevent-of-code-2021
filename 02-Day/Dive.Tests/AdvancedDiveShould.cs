@@ -20,11 +20,17 @@ namespace Dive.Tests
         [TestCase(2, 2)]
         [TestCase(3, 3)]
         [TestCase(44, 44)]
-        public void move_down_increase_aim(int step, int expectedAim)
+        public void move_down_increase_the_aim(int step, int expectedAim)
         {
             dive.Down(step);
 
             dive.Aim.Should().Be(expectedAim);
+        }
+
+        [Test]
+        public void has_0_aim_when_created()
+        {
+            dive.Aim.Should().Be(0);
         }
 
     }
