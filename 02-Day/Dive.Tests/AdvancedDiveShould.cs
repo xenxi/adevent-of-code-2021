@@ -39,6 +39,18 @@ namespace Dive.Tests
             dive.Aim.Should().Be(expectedAim);
         }
 
+        [TestCase(1, 100, 99)]
+        [TestCase(2, 100, 98)]
+        [TestCase(3, 100, 97)]
+        public void move_up_decreases_the_depth(int step, int initialAim, int expectedAim)
+        {
+            dive.Down(initialAim);
+           
+            dive.Up(step);
+
+            dive.Aim.Should().Be(expectedAim);
+        }
+
         [SetUp]
         public void SetUp()
         {

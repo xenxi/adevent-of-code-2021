@@ -16,6 +16,7 @@
 
         public override void Up(int step)
         {
+            Aim -= step;
         }
     }
 }
