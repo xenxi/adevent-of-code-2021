@@ -7,13 +7,19 @@ namespace Dive.Tests
     [TestFixture]
     public class AdvancedDiveShould
     {
-        private AdvancedDive dive => _dive ?? throw new InvalidOperationException("not initialized");
         private AdvancedDive? _dive;
+        private AdvancedDive dive => _dive ?? throw new InvalidOperationException("not initialized");
 
-        [SetUp]
-        public void SetUp()
+        [Test]
+        public void has_0_aim_when_created()
         {
-            _dive = new AdvancedDive();
+            dive.Aim.Should().Be(0);
+        }
+
+        [Test]
+        public void has_0_depth_when_created()
+        {
+            dive.Depth.Should().Be(0);
         }
 
         [TestCase(1, 1)]
@@ -27,11 +33,10 @@ namespace Dive.Tests
             dive.Aim.Should().Be(expectedAim);
         }
 
-        [Test]
-        public void has_0_aim_when_created()
+        [SetUp]
+        public void SetUp()
         {
-            dive.Aim.Should().Be(0);
+            _dive = new AdvancedDive();
         }
-
     }
 }
