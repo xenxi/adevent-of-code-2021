@@ -11,6 +11,7 @@ Print(report);
 var sender = BuildSender(report);
 
 sender.Send(new BasicDive());
+sender.Send(new AdvancedDive());
 
 static InstructionSender BuildSender(string commands)
 {
