@@ -8,7 +8,7 @@
         {
             _rawInput = input;
 
-            Flatten = "00";
+            Flatten = input;
         }
 
         public string Flatten { get; }
