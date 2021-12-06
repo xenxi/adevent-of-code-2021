@@ -2,9 +2,26 @@
 {
     public class HealthChecker
     {
-        public static HealthCheckerResponse GenerateReport(string input)
+        private string input;
+        private Rates _repository;
+
+        public HealthChecker(string input)
         {
-            throw new NotImplementedException();
+            this.input = input;
+        }
+
+        public HealthChecker(Rates repository)
+        {
+            _repository = repository;
+        }
+
+        public HealthCheckerResponse GenerateReport()
+        {
+            _repository.GetGamma();
+
+            _repository.GetEpsilon();
+
+            return null;
         }
     }
 }
