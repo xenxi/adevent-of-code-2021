@@ -23,21 +23,23 @@
         {
             var lines = ReadCharacterInColumns(input);
 
-            var invertInput = lines.GroupBy(line => line.Column).Select(g => MostRepeated(g.Select(d => d.Character))).ToArray();
+            var flatCharacters = lines.Select(line => MostRepeated(line));
 
-
-            return new string(invertInput);
+            return new string(flatCharacters.ToArray());
         }
 
-        private static IList<(char Character, int Column)> ReadCharacterInColumns(string input)
+        private static IList<string> ReadCharacterInColumns(string input)
         {
             var lines = input.Split(Environment.NewLine);
-            var chartersWithColumnIndex = lines.SelectMany(line => line.Select((Character, Column) => (Character, Column)));
+            var charactersGroupByColum = lines
+                .SelectMany(line => line
+                    .Select((Character, Column) => (Character, Column)))
+                .GroupBy(line => line.Column);
 
-            return chartersWithColumnIndex.ToList();
+            return charactersGroupByColum.Select(g => new string(g.Select(d => d.Character).ToArray())).ToList();
         }
 
-        private char MostRepeated(IEnumerable<char> enumerable) 
+        private static char MostRepeated(IEnumerable<char> enumerable) 
             => enumerable
                 .GroupBy(c => c)
                 .OrderByDescending(g => g.Count())
