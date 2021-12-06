@@ -16,5 +16,15 @@ namespace BinaryDiagnostic.Tests
             rates.FlattenBinaryNumber.Should().Be(expectedFlattenBinary);
         }
 
+        [TestCase("00", 0)]
+        public void return_gamma(string input, int expectedGamma)
+        {
+            var rates = new StringRates(input);
+
+            var gamma = rates.GetGamma();
+
+            gamma.Should().Be(expectedGamma);
+        }
+
     }
 }

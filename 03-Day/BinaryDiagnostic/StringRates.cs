@@ -16,7 +16,7 @@
 
         public int GetGamma()
         {
-            throw new NotImplementedException();
+            return 0;
         }
 
         private string GetFlattenBinaryNumber(string input)
