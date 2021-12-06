@@ -54,5 +54,9 @@
                 .GroupBy(c => c)
                 .OrderByDescending(g => g.Count())
                 .First().Key;
+
+        public void GetOxygenGenerator()
+        {
+        }
     }
 }

@@ -30,7 +30,13 @@ namespace BinaryDiagnostic.Tests
 
             repository.Received(1).GetEpsilon();
         }
+        [Test]
+        public void search_oxygen_generator_rate()
+        {
+            checker.GenerateReport();
 
+            repository.Received(1).GetOxygenGenerator();
+        }
         [Test]
         public void search_gamma_rate()
         {

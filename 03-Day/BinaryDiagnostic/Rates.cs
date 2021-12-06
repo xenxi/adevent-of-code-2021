@@ -4,5 +4,6 @@
     {
         int GetGamma();
         int GetEpsilon();
+        void GetOxygenGenerator();
     }
 }
