@@ -24,19 +24,21 @@ namespace BinaryDiagnostic.Tests
         }
 
         [Test]
+        public void search_co2_scrubber_rate()
+        {
+            checker.GenerateReport();
+
+            repository.Received(1).GetCo2Scrubber();
+        }
+
+        [Test]
         public void search_epsilon_rate()
         {
             checker.GenerateReport();
 
             repository.Received(1).GetEpsilon();
         }
-        [Test]
-        public void search_oxygen_generator_rate()
-        {
-            checker.GenerateReport();
 
-            repository.Received(1).GetOxygenGenerator();
-        }
         [Test]
         public void search_gamma_rate()
         {
@@ -45,6 +47,13 @@ namespace BinaryDiagnostic.Tests
             repository.Received(1).GetGamma();
         }
 
+        [Test]
+        public void search_oxygen_generator_rate()
+        {
+            checker.GenerateReport();
+
+            repository.Received(1).GetOxygenGenerator();
+        }
         [SetUp]
         public void SetUp()
         {

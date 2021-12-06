@@ -15,6 +15,7 @@
             var powerConsumption = gamma * epsilon;
 
             _repository.GetOxygenGenerator();
+            _repository.GetCo2Scrubber();
 
             return new HealthCheckerResponse(powerConsumption: powerConsumption, lifeSupport: 0);
         }
