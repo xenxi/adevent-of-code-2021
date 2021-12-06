@@ -2,9 +2,13 @@
 {
     public class StringRates : Rates
     {
+        private readonly string[] _lines;
+
         public StringRates(string input)
         {
-            FlattenBinaryNumber = GetFlattenBinaryNumber(input);
+            _lines = GetLines(input);
+
+            FlattenBinaryNumber = GetFlattenBinaryNumber(_lines);
         }
 
         public string FlattenBinaryNumber { get; }
@@ -40,9 +44,8 @@
                 .OrderByDescending(g => g.Count())
                 .First().Key;
 
-        private static IList<string> ReadCharacterInColumns(string input)
+        private static IList<string> ReadCharacterInColumns(string[] lines)
         {
-            var lines = GetLines(input);
             var charactersGroupByColum = lines
                 .SelectMany(line => line
                     .Select((Character, Column) => (Character, Column)))
@@ -56,11 +59,11 @@
             return Convert.ToInt32(binaryNumber, 2);
         }
 
-        private string GetFlattenBinaryNumber(string input)
+        private string GetFlattenBinaryNumber(string[] lines)
         {
-            var lines = ReadCharacterInColumns(input);
+            var columns = ReadCharacterInColumns(lines);
 
-            var flatCharacters = lines.Select(line => MostRepeated(line));
+            var flatCharacters = columns.Select(column => MostRepeated(column));
 
             return new string(flatCharacters.ToArray());
         }
