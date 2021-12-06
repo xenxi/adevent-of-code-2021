@@ -19,6 +19,10 @@ namespace BinaryDiagnostic.Tests
         }
 
         [TestCase("00", 0)]
+        [TestCase("01", 1)]
+        [TestCase("10", 2)]
+        [TestCase("11", 3)]
+        [TestCase("1111", 15)]
         public void return_gamma(string input, int expectedGamma)
         {
             var rates = new StringRates(input);

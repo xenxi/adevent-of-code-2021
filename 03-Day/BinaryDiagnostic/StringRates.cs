@@ -16,7 +16,7 @@
 
         public int GetGamma()
         {
-            return 0;
+            return Convert.ToInt32(FlattenBinaryNumber, 2);
         }
 
         private string GetFlattenBinaryNumber(string input)
