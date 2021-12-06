@@ -33,14 +33,20 @@
 
         private static IList<string> ReadCharacterInColumns(string input)
         {
-            var separator = new string[] { "\r\n", "\n" };
-            var lines = input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            var lines = GetLines(input);
             var charactersGroupByColum = lines
                 .SelectMany(line => line
                     .Select((Character, Column) => (Character, Column)))
                 .GroupBy(line => line.Column);
 
             return charactersGroupByColum.Select(g => new string(g.Select(d => d.Character).ToArray())).ToList();
+        }
+
+        private static string[] GetLines(string input)
+        {
+            var separator = new string[] { "\r\n", "\n" };
+            var lines = input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            return lines;
         }
 
         private static char MostRepeated(IEnumerable<char> enumerable) 
