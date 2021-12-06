@@ -14,7 +14,7 @@
 
             var epsilon = _repository.GetEpsilon();
             var powerConsumption = gamma * epsilon;
-            return new HealthCheckerResponse(powerConsumption: powerConsumption);
+            return new HealthCheckerResponse(powerConsumption: powerConsumption, lifeSupport: 0);
         }
     }
 }
