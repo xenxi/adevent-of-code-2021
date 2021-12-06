@@ -7,11 +7,6 @@
             FlattenBinaryNumber = GetFlattenBinaryNumber(input);
         }
 
-        private string GetFlattenBinaryNumber(string input)
-        {
-            return input;
-        }
-
         public string FlattenBinaryNumber { get; }
 
         public int GetEpsilon()
@@ -23,5 +18,21 @@
         {
             throw new NotImplementedException();
         }
+
+        private string GetFlattenBinaryNumber(string input)
+        {
+            var lines = input.Split(Environment.NewLine).SelectMany(line => line.Select((c, index) => new { character = c, column = index}));
+
+            var invertInput = lines.GroupBy(line => line.column).Select(g => MostRepeated(g.Select(d => d.character))).ToArray();
+
+
+            return new string(invertInput);
+        }
+
+        private char MostRepeated(IEnumerable<char> enumerable) 
+            => enumerable
+                .GroupBy(c => c)
+                .OrderByDescending(g => g.Count())
+                .First().Key;
     }
 }
