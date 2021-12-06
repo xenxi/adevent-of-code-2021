@@ -47,5 +47,15 @@ namespace BinaryDiagnostic.Tests
             gamma.Should().Be(expectedGamma);
         }
 
+        [Test]
+        public void return_oxygen_generator()
+        {
+            var input = "00100\r\n11110\r\n10110\r\n10111\r\n10101\r\n01111\r\n00111\r\n11100\r\n10000\r\n11001\r\n00010\r\n01010";
+            var rates = new StringRates(input);
+
+            var oxygenGenerator = rates.GetOxygenGenerator();
+
+            oxygenGenerator.Should().Be(23);
+        }
     }
 }
