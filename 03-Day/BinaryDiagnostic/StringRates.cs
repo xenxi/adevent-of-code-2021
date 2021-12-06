@@ -19,29 +19,11 @@
             return ConvertBinaryToInt(binary);
         }
 
-        private string FilterByBitCriteria(bool invertCursorCharacter)
-        {
-            var filterLines = _lines.ToList();
-            var columnIndex = 0;
-            while (filterLines.Count > 1)
-            {
-                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray());
-                var filterCharacter = mainBit[columnIndex];
-                if (invertCursorCharacter)
-                    filterCharacter = filterCharacter == '1' ? '0' : '1';
-                filterLines = filterLines.Where(line => line[columnIndex] == filterCharacter).ToList();
-                columnIndex++;
-            }
-            return filterLines.First();
-        }
-
         public int GetEpsilon()
         {
             string invert = InvertBinary(FlattenBinaryNumber);
             return ConvertBinaryToInt(invert);
         }
-
-        private string InvertBinary(string binary) => new string(binary.Select(x => x == '0' ? '1' : '0').ToArray());
 
         public int GetGamma() => ConvertBinaryToInt(FlattenBinaryNumber);
 
@@ -58,7 +40,7 @@
             return lines;
         }
 
-        private static char MostRepeated(IEnumerable<char> enumerable) 
+        private static char MostRepeated(IEnumerable<char> enumerable)
             => enumerable
                 .GroupBy(c => c)
                 .OrderByDescending(g => g.Count())
@@ -75,11 +57,23 @@
             return charactersGroupByColum.Select(g => new string(g.Select(d => d.Character).ToArray())).ToList();
         }
 
-        private int ConvertBinaryToInt(string binaryNumber)
-        {
-            return Convert.ToInt32(binaryNumber, 2);
-        }
+        private int ConvertBinaryToInt(string binaryNumber) => Convert.ToInt32(binaryNumber, 2);
 
+        private string FilterByBitCriteria(bool invertCursorCharacter)
+        {
+            var filterLines = _lines.ToList();
+            var columnIndex = 0;
+            while (filterLines.Count > 1)
+            {
+                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray());
+                var filterCharacter = mainBit[columnIndex];
+                if (invertCursorCharacter)
+                    filterCharacter = InvertBinary(filterCharacter);
+                filterLines = filterLines.Where(line => line[columnIndex] == filterCharacter).ToList();
+                columnIndex++;
+            }
+            return filterLines.First();
+        }
         private string GetFlattenBinaryNumber(string[] lines)
         {
             var columns = ReadCharacterInColumns(lines);
@@ -88,5 +82,9 @@
 
             return new string(flatCharacters.ToArray());
         }
+
+        private string InvertBinary(string binary) => new string(binary.Select(x => InvertBinary(x)).ToArray());
+
+        private static char InvertBinary(char x) => x == '0' ? '1' : '0';
     }
 }
