@@ -21,12 +21,20 @@
 
         private string GetFlattenBinaryNumber(string input)
         {
-            var lines = input.Split(Environment.NewLine).SelectMany(line => line.Select((c, index) => new { character = c, column = index}));
+            var lines = ReadCharacterInColumns(input);
 
-            var invertInput = lines.GroupBy(line => line.column).Select(g => MostRepeated(g.Select(d => d.character))).ToArray();
+            var invertInput = lines.GroupBy(line => line.Column).Select(g => MostRepeated(g.Select(d => d.Character))).ToArray();
 
 
             return new string(invertInput);
+        }
+
+        private static IList<(char Character, int Column)> ReadCharacterInColumns(string input)
+        {
+            var lines = input.Split(Environment.NewLine);
+            var chartersWithColumnIndex = lines.SelectMany(line => line.Select((Character, Column) => (Character, Column)));
+
+            return chartersWithColumnIndex.ToList();
         }
 
         private char MostRepeated(IEnumerable<char> enumerable) 
