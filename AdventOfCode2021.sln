@@ -23,11 +23,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dive.ConsoleApp.Tests", "02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Day", "03-Day", "{76DB64AF-2F24-4AE3-BAA0-65AF99139615}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryDiagnostic", "03-Day\BinaryDiagnostic\BinaryDiagnostic.csproj", "{761EC7F3-909D-402F-A9F6-C4D8BD813E86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryDiagnostic", "03-Day\BinaryDiagnostic\BinaryDiagnostic.csproj", "{761EC7F3-909D-402F-A9F6-C4D8BD813E86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryDiagnostic.Tests", "BinaryDiagnostic.Tests\BinaryDiagnostic.Tests.csproj", "{4E2F11F4-3C3F-453E-A7B8-5BC1FB861BD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryDiagnostic.Tests", "BinaryDiagnostic.Tests\BinaryDiagnostic.Tests.csproj", "{4E2F11F4-3C3F-453E-A7B8-5BC1FB861BD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryDiagnostic.ConsoleApp", "BinaryDiagnostic.ConsoleApp\BinaryDiagnostic.ConsoleApp.csproj", "{696B3153-DFCC-421C-81EC-3826230789A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryDiagnostic.ConsoleApp", "BinaryDiagnostic.ConsoleApp\BinaryDiagnostic.ConsoleApp.csproj", "{696B3153-DFCC-421C-81EC-3826230789A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Day", "04-Day", "{DB711758-DEA4-4989-8AF5-908747E781C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiantSquid", "04-Day\GiantSquid\GiantSquid.csproj", "{F5BBF011-EFA9-42E4-B990-F4A0DBF876F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiantSquid.Tests", "04-Day\GiantSquid.Tests\GiantSquid.Tests.csproj", "{AACB1EE9-E669-4075-86F4-B175BDE1AF75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiantSquid.ConsoleApp", "04-Day\GiantSquid.ConsoleApp\GiantSquid.ConsoleApp.csproj", "{C34868EA-F29F-4694-9B3B-A71571A24461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +83,18 @@ Global
 		{696B3153-DFCC-421C-81EC-3826230789A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{696B3153-DFCC-421C-81EC-3826230789A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{696B3153-DFCC-421C-81EC-3826230789A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BBF011-EFA9-42E4-B990-F4A0DBF876F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BBF011-EFA9-42E4-B990-F4A0DBF876F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BBF011-EFA9-42E4-B990-F4A0DBF876F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BBF011-EFA9-42E4-B990-F4A0DBF876F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AACB1EE9-E669-4075-86F4-B175BDE1AF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AACB1EE9-E669-4075-86F4-B175BDE1AF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AACB1EE9-E669-4075-86F4-B175BDE1AF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AACB1EE9-E669-4075-86F4-B175BDE1AF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34868EA-F29F-4694-9B3B-A71571A24461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34868EA-F29F-4694-9B3B-A71571A24461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34868EA-F29F-4694-9B3B-A71571A24461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34868EA-F29F-4694-9B3B-A71571A24461}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +110,9 @@ Global
 		{761EC7F3-909D-402F-A9F6-C4D8BD813E86} = {76DB64AF-2F24-4AE3-BAA0-65AF99139615}
 		{4E2F11F4-3C3F-453E-A7B8-5BC1FB861BD4} = {76DB64AF-2F24-4AE3-BAA0-65AF99139615}
 		{696B3153-DFCC-421C-81EC-3826230789A9} = {76DB64AF-2F24-4AE3-BAA0-65AF99139615}
+		{F5BBF011-EFA9-42E4-B990-F4A0DBF876F6} = {DB711758-DEA4-4989-8AF5-908747E781C5}
+		{AACB1EE9-E669-4075-86F4-B175BDE1AF75} = {DB711758-DEA4-4989-8AF5-908747E781C5}
+		{C34868EA-F29F-4694-9B3B-A71571A24461} = {DB711758-DEA4-4989-8AF5-908747E781C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E1EB198-D99E-4719-B68C-C024FBC7E03B}
