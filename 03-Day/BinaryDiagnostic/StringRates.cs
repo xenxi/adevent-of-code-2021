@@ -33,7 +33,8 @@
 
         private static IList<string> ReadCharacterInColumns(string input)
         {
-            var lines = input.Split(Environment.NewLine);
+            var separator = new string[] { "\r\n", "\n" };
+            var lines = input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
             var charactersGroupByColum = lines
                 .SelectMany(line => line
                     .Select((Character, Column) => (Character, Column)))
