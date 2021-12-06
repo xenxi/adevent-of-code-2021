@@ -19,7 +19,7 @@
             var columnIndex = 0;
             while (filterLines.Count > 1)
             {
-                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray(), '1');
+                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray());
                 var filterCharacter = mainBit[columnIndex];
                 var invertFilterCharacter = filterCharacter == '1' ? '0' : '1';
                 filterLines = filterLines.Where(line => line[columnIndex] == invertFilterCharacter).ToList();
@@ -44,7 +44,7 @@
             var columnIndex = 0;
             while (filterLines.Count > 1)
             {
-                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray(), '1');
+                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray());
                 var filterCharacter = mainBit[columnIndex];
                 filterLines = filterLines.Where(line => line[columnIndex] == filterCharacter).ToList();
                 columnIndex++;
@@ -59,17 +59,12 @@
             return lines;
         }
 
-        private static char MostRepeated(IEnumerable<char> enumerable, char? sortChar)
-        {
-            var result = enumerable
-                           .GroupBy(c => c)
-                           .OrderByDescending(g => g.Count());
-            var distinct = result.Select(c => c.Count()).Distinct().Count();
-            if (distinct == 1 && sortChar.HasValue)
-                result = result.OrderByDescending(g => g.Key == sortChar.Value);
-
-            return result.First().Key;
-        }
+        private static char MostRepeated(IEnumerable<char> enumerable) 
+            => enumerable
+                .GroupBy(c => c)
+                .OrderByDescending(g => g.Count())
+                .ThenByDescending(g => g.Key == '1')
+                .First().Key;
 
         private static IList<string> ReadCharacterInColumns(string[] lines)
         {
@@ -86,11 +81,11 @@
             return Convert.ToInt32(binaryNumber, 2);
         }
 
-        private string GetFlattenBinaryNumber(string[] lines, char? sortChar = null)
+        private string GetFlattenBinaryNumber(string[] lines)
         {
             var columns = ReadCharacterInColumns(lines);
 
-            var flatCharacters = columns.Select(column => MostRepeated(column, sortChar));
+            var flatCharacters = columns.Select(column => MostRepeated(column));
 
             return new string(flatCharacters.ToArray());
         }
