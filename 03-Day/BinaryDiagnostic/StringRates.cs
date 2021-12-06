@@ -12,12 +12,14 @@
         public int GetEpsilon()
         {
             var invert = new string(FlattenBinaryNumber.Select(x => x == '0' ? '1' : '0').ToArray());
-            return Convert.ToInt32(invert, 2);
+            return ConvertBinaryToInt(invert);
         }
 
-        public int GetGamma()
+        public int GetGamma() => ConvertBinaryToInt(FlattenBinaryNumber);
+
+        private int ConvertBinaryToInt(string binaryNumber)
         {
-            return Convert.ToInt32(FlattenBinaryNumber, 2);
+            return Convert.ToInt32(binaryNumber, 2);
         }
 
         private string GetFlattenBinaryNumber(string input)
