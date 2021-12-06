@@ -57,5 +57,16 @@ namespace BinaryDiagnostic.Tests
 
             oxygenGenerator.Should().Be(23);
         }
+
+        [Test]
+        public void return_co2_scrubber()
+        {
+            var input = "00100\r\n11110\r\n10110\r\n10111\r\n10101\r\n01111\r\n00111\r\n11100\r\n10000\r\n11001\r\n00010\r\n01010";
+            var rates = new StringRates(input);
+
+            var co2Scrubber = rates.GetCo2Scrubber();
+
+            co2Scrubber.Should().Be(10);
+        }
     }
 }

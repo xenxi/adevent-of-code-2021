@@ -15,14 +15,26 @@
 
         public int GetCo2Scrubber()
         {
-            return 0;
+            var filterLines = _lines.ToList();
+            var columnIndex = 0;
+            while (filterLines.Count > 1)
+            {
+                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray(), '1');
+                var filterCharacter = mainBit[columnIndex];
+                var invertFilterCharacter = filterCharacter == '1' ? '0' : '1';
+                filterLines = filterLines.Where(line => line[columnIndex] == invertFilterCharacter).ToList();
+                columnIndex++;
+            }
+            return ConvertBinaryToInt(filterLines.First());
         }
 
         public int GetEpsilon()
         {
-            var invert = new string(FlattenBinaryNumber.Select(x => x == '0' ? '1' : '0').ToArray());
+            string invert = InvertBinary(FlattenBinaryNumber);
             return ConvertBinaryToInt(invert);
         }
+
+        private string InvertBinary(string binary) => new string(binary.Select(x => x == '0' ? '1' : '0').ToArray());
 
         public int GetGamma() => ConvertBinaryToInt(FlattenBinaryNumber);
 
