@@ -13,10 +13,9 @@ namespace BinaryDiagnostic.Tests
             var repository = new StringRates(input);
             var cheker = new HealthChecker(repository);
 
-            var report = cheker.GenerateReport();
+            var powerConsumption = cheker.GenerateReport().PowerConsumption;
 
-            var expectedReport = HealthCheckerResponseMother.Create(powerConsumption: 198, lifeSupport: 0);
-            report.Should().BeEquivalentTo(expectedReport);
+            powerConsumption.Should().Be(198);
         }
 
         [Test]
@@ -26,10 +25,9 @@ namespace BinaryDiagnostic.Tests
             var repository = new StringRates(input);
             var cheker = new HealthChecker(repository);
 
-            var report = cheker.GenerateReport();
+            var lifeSupport = cheker.GenerateReport().LifeSupport;
 
-            var expectedReport = HealthCheckerResponseMother.Create(powerConsumption: 198, lifeSupport: 230);
-            report.Should().BeEquivalentTo(expectedReport);
+            lifeSupport.Should().Be(230);
         }
     }
 }
