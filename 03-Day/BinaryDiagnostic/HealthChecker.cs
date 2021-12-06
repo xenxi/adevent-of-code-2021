@@ -3,6 +3,7 @@
     public class HealthChecker
     {
         private Rates _repository;
+
         public HealthChecker(Rates repository)
         {
             _repository = repository;
@@ -14,10 +15,11 @@
             var epsilon = _repository.GetEpsilon();
             var powerConsumption = gamma * epsilon;
 
-            _repository.GetOxygenGenerator();
-            _repository.GetCo2Scrubber();
+            var oxygen = _repository.GetOxygenGenerator();
+            var co2 = _repository.GetCo2Scrubber();
+            var lifeSupport = oxygen * co2;
 
-            return new HealthCheckerResponse(powerConsumption: powerConsumption, lifeSupport: 0);
+            return new HealthCheckerResponse(powerConsumption: powerConsumption, lifeSupport: lifeSupport);
         }
     }
 }

@@ -18,9 +18,22 @@ namespace BinaryDiagnostic.Tests
             repository.GetEpsilon().Returns(epsilon);
             repository.GetGamma().Returns(gamma);
 
-            var report = checker.GenerateReport();
+            var powerConsumption = checker.GenerateReport().PowerConsumption;
 
-            report.PowerConsumption.Should().Be(expectedPowerConsumption);
+            powerConsumption.Should().Be(expectedPowerConsumption);
+        }
+
+        [TestCase(1, 1, 1)]
+        [TestCase(2, 2, 4)]
+        [TestCase(0, 44, 0)]
+        public void calcule_life_support(int oxygenGeneratorRating, int Co2ScrubberRating, int expectedLifeSupport)
+        {
+            repository.GetCo2Scrubber().Returns(Co2ScrubberRating);
+            repository.GetOxygenGenerator().Returns(oxygenGeneratorRating);
+
+            var lifeSupport = checker.GenerateReport().LifeSupport;
+
+            lifeSupport.Should().Be(expectedLifeSupport);
         }
 
         [Test]
@@ -54,6 +67,7 @@ namespace BinaryDiagnostic.Tests
 
             repository.Received(1).GetOxygenGenerator();
         }
+
         [SetUp]
         public void SetUp()
         {

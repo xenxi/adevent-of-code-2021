@@ -4,7 +4,7 @@
     {
         int GetGamma();
         int GetEpsilon();
-        void GetOxygenGenerator();
-        void GetCo2Scrubber();
+        int GetOxygenGenerator();
+        int GetCo2Scrubber();
     }
 }

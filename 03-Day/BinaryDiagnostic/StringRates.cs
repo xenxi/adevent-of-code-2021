@@ -9,8 +9,9 @@
 
         public string FlattenBinaryNumber { get; }
 
-        public void GetCo2Scrubber()
+        public int GetCo2Scrubber()
         {
+            return 0;
         }
 
         public int GetEpsilon()
@@ -21,8 +22,9 @@
 
         public int GetGamma() => ConvertBinaryToInt(FlattenBinaryNumber);
 
-        public void GetOxygenGenerator()
+        public int GetOxygenGenerator()
         {
+            return 0;
         }
 
         private static string[] GetLines(string input)
