@@ -2,13 +2,14 @@
 {
     public class StringRates : Rates
     {
-        private readonly string _rawInput;
-
         public StringRates(string input)
         {
-            _rawInput = input;
+            FlattenBinaryNumber = GetFlattenBinaryNumber(input);
+        }
 
-            FlattenBinaryNumber = input;
+        private string GetFlattenBinaryNumber(string input)
+        {
+            return input;
         }
 
         public string FlattenBinaryNumber { get; }
