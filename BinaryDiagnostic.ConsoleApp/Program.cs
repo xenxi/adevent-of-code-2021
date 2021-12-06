@@ -9,6 +9,7 @@ var repository = new StringRates(ratesStr);
 var cheker = new HealthChecker(repository);
 var report = cheker.GenerateReport();
 Print($"PowerConsumption: {report.PowerConsumption}");
+Print($"LifeSupport: {report.LifeSupport}");
 
 static void Print(string text, bool highlight = false)
 {

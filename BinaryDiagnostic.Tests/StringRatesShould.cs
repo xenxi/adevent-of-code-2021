@@ -46,5 +46,6 @@ namespace BinaryDiagnostic.Tests
 
             gamma.Should().Be(expectedGamma);
         }
+
     }
 }
