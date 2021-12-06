@@ -11,7 +11,8 @@
 
         public int GetEpsilon()
         {
-            throw new NotImplementedException();
+            var invert = new string(FlattenBinaryNumber.Select(x => x == '0' ? '1' : '0').ToArray());
+            return Convert.ToInt32(invert, 2);
         }
 
         public int GetGamma()

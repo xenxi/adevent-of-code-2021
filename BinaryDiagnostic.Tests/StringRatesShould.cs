@@ -32,5 +32,18 @@ namespace BinaryDiagnostic.Tests
             gamma.Should().Be(expectedGamma);
         }
 
+        [TestCase("00", 3)]
+        [TestCase("01", 2)]
+        [TestCase("10", 1)]
+        [TestCase("11", 0)]
+        [TestCase("1111", 0)]
+        public void return_epsilon(string input, int expectedGamma)
+        {
+            var rates = new StringRates(input);
+
+            var gamma = rates.GetEpsilon();
+
+            gamma.Should().Be(expectedGamma);
+        }
     }
 }
