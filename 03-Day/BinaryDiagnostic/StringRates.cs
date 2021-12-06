@@ -15,17 +15,24 @@
 
         public int GetCo2Scrubber()
         {
+            var binary = FilterByBitCriteria(true);
+            return ConvertBinaryToInt(binary);
+        }
+
+        private string FilterByBitCriteria(bool invertCursorCharacter)
+        {
             var filterLines = _lines.ToList();
             var columnIndex = 0;
             while (filterLines.Count > 1)
             {
                 var mainBit = GetFlattenBinaryNumber(filterLines.ToArray());
                 var filterCharacter = mainBit[columnIndex];
-                var invertFilterCharacter = filterCharacter == '1' ? '0' : '1';
-                filterLines = filterLines.Where(line => line[columnIndex] == invertFilterCharacter).ToList();
+                if (invertCursorCharacter)
+                    filterCharacter = filterCharacter == '1' ? '0' : '1';
+                filterLines = filterLines.Where(line => line[columnIndex] == filterCharacter).ToList();
                 columnIndex++;
             }
-            return ConvertBinaryToInt(filterLines.First());
+            return filterLines.First();
         }
 
         public int GetEpsilon()
@@ -40,16 +47,8 @@
 
         public int GetOxygenGenerator()
         {
-            var filterLines = _lines.ToList();
-            var columnIndex = 0;
-            while (filterLines.Count > 1)
-            {
-                var mainBit = GetFlattenBinaryNumber(filterLines.ToArray());
-                var filterCharacter = mainBit[columnIndex];
-                filterLines = filterLines.Where(line => line[columnIndex] == filterCharacter).ToList();
-                columnIndex++;
-            }
-            return ConvertBinaryToInt(filterLines.First());
+            var binary = FilterByBitCriteria(false);
+            return ConvertBinaryToInt(binary);
         }
 
         private static string[] GetLines(string input)
