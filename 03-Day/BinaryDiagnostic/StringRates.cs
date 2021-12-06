@@ -8,10 +8,10 @@
         {
             _rawInput = input;
 
-            Flatten = input;
+            FlattenBinaryNumber = input;
         }
 
-        public string Flatten { get; }
+        public string FlattenBinaryNumber { get; }
 
         public int GetEpsilon()
         {

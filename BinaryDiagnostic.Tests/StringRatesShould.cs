@@ -8,11 +8,11 @@ namespace BinaryDiagnostic.Tests
     {
         [TestCase("00", "00")]
         [TestCase("11", "11")]
-        public void flatten_input_leaving_the_most_repeated_digit_in_each_column(string input, string expectedFlattenBinary)
+        public void flatten_input_leaving_the_most_repeated_digit_in_each_column(string input, string expectedFlattenBinaryNumber)
         {
             var rates = new StringRates(input);
 
-            rates.Flatten.Should().Be(expectedFlattenBinary);
+            rates.FlattenBinaryNumber.Should().Be(expectedFlattenBinaryNumber);
         }
 
     }
