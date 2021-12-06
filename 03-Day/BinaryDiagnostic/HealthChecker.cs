@@ -3,12 +3,6 @@
     public class HealthChecker
     {
         private Rates _repository;
-        private string input;
-        public HealthChecker(string input)
-        {
-            this.input = input;
-        }
-
         public HealthChecker(Rates repository)
         {
             _repository = repository;
