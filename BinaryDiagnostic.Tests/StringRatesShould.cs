@@ -13,7 +13,9 @@ namespace BinaryDiagnostic.Tests
         {
             var rates = new StringRates(input);
 
-            rates.FlattenBinaryNumber.Should().Be(expectedFlattenBinary);
+            var flattenBinaryNumber = rates.FlattenBinaryNumber;
+
+            flattenBinaryNumber.Should().Be(expectedFlattenBinary);
         }
 
         [TestCase("00", 0)]
