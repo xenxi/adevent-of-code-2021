@@ -2,9 +2,8 @@
 {
     public class HealthChecker
     {
-        private string input;
         private Rates _repository;
-
+        private string input;
         public HealthChecker(string input)
         {
             this.input = input;
@@ -17,11 +16,11 @@
 
         public HealthCheckerResponse GenerateReport()
         {
-            _repository.GetGamma();
+            var gamma = _repository.GetGamma();
 
-            _repository.GetEpsilon();
-
-            return new HealthCheckerResponse(powerConsumption: 1);
+            var epsilon = _repository.GetEpsilon();
+            var powerConsumption = gamma * epsilon;
+            return new HealthCheckerResponse(powerConsumption: powerConsumption);
         }
     }
 }

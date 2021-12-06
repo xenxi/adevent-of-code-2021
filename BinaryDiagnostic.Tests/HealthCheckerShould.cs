@@ -29,17 +29,19 @@ namespace BinaryDiagnostic.Tests
             repository.Received(1).GetEpsilon();
         }
 
-        [Test]
-        public void calcule_energy_consumption()
+        [TestCase(1,1,1)]
+        [TestCase(2,2,4)]
+        [TestCase(0,44,0)]
+        public void calcule_energy_consumption(int gamma, int epsilon, int expectedPowerConsumption)
         {
             var repository = Substitute.For<Rates>();
             var checker = new HealthChecker(repository);
-            repository.GetEpsilon().Returns(1);
-            repository.GetGamma().Returns(1);
+            repository.GetEpsilon().Returns(epsilon);
+            repository.GetGamma().Returns(gamma);
 
             var report = checker.GenerateReport();
 
-            report.PowerConsumption.Should().Be(1);
+            report.PowerConsumption.Should().Be(expectedPowerConsumption);
         }
 
     }
