@@ -21,7 +21,7 @@
 
             _repository.GetEpsilon();
 
-            return null;
+            return new HealthCheckerResponse(powerConsumption: 1);
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface Rates
     {
-        void GetGamma();
-        void GetEpsilon();
+        int GetGamma();
+        int GetEpsilon();
     }
 }
