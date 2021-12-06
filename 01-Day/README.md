@@ -47,7 +47,7 @@ As the submarine drops below the surface of the ocean, it automatically performs
 
 In this example, there are ```7``` measurements that are larger than the previous measurement.
 
-## Part Two ⭐
+## Part Two ⭐⭐
 
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
