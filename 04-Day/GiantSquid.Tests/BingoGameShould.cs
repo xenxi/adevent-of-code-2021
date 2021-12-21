@@ -25,6 +25,7 @@ namespace GiantSquid.Tests
         {
             var aGivenBoard = GivenAnyBoard();
             game.AddBoard(aGivenBoard);
+            numberGenerator.Next().Returns(22, 13, 17, 11, 0);
 
             var winner = game.Play();
 

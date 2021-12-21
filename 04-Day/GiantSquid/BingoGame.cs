@@ -13,17 +13,18 @@ public class BingoGame
     public IReadOnlyList<Board> Boards => _boards.AsReadOnly();
 
     public void AddBoard(Board board) => _boards.Add(board);
-    public Board Play()
+
+    public Board? Play()
     {
         Board? winner = null;
-
-        while (winner == null)
+        var number = numberGenerator.Next();
+        while (winner == null && number.HasValue)
         {
-            var number = numberGenerator.Next();
-            _boards.ForEach(board => board.Play(number));
+            _boards.ForEach(board => board.Play(number.Value));
             winner = _boards.FirstOrDefault(board => board.Bingo());
+            number = numberGenerator.Next();
         }
 
-       return winner;
+        return winner;
     }
 }
