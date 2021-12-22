@@ -17,7 +17,9 @@
 
         public int? Next()
         {
-            iterator.MoveNext();
+            if (!iterator.MoveNext())
+                throw new InvalidOperationException();
+
             return iterator.Current;
         }
     }

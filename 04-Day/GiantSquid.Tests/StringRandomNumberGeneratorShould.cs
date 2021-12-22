@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System;
 
 namespace GiantSquid.Tests
 {
@@ -26,5 +27,18 @@ namespace GiantSquid.Tests
             foreach (var expectedNumber in expectedNumbers)
                 generator.Next().Should().Be(expectedNumber);
         }
+
+        [Test]
+        public void not_allow_request_a_number_when_there_are_no_numbers_left_unused()
+        {
+            var generator = new StringRandomNumberGenerator("1");
+            generator.Next();
+
+            Action action = () => generator.Next();
+
+            action.Should().Throw<InvalidOperationException>();
+        }
+
+
     }
 }
