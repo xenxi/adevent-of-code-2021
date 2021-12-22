@@ -10,10 +10,13 @@
         {
             this.input = input;
 
-            numbers = input.Split(',', options: StringSplitOptions.RemoveEmptyEntries).Select(strNumber => int.Parse(strNumber));
+            numbers = GetNumbers(input);
 
             iterator = numbers.GetEnumerator();
         }
+
+        private static IEnumerable<int> GetNumbers(string input) 
+            => input.Split(',', options: StringSplitOptions.RemoveEmptyEntries).Select(strNumber => int.Parse(strNumber));
 
         public int? Next()
         {

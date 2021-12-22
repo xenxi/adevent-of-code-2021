@@ -19,7 +19,7 @@ namespace GiantSquid.Tests
         [TestCase("1,2", 1,2)]
         [TestCase("2,5,1,2", 2, 5, 1, 2)]
         [TestCase("5,5,8,55,12", 5, 5, 8, 55, 12)]
-        public void return_numbers_given_in_string_with_one_number(string input, params int[] expectedNumbers)
+        public void return_numbers_sequentially_given_in_string_separated_by_commas(string input, params int[] expectedNumbers)
         {
             var generator = new StringRandomNumberGenerator(input);
 
