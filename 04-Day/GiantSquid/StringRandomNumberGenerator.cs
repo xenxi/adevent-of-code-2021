@@ -2,16 +2,23 @@
 {
     public class StringRandomNumberGenerator : RandomNumberGenerator
     {
-        private string input;
+        private readonly string input;
+        private readonly IEnumerable<int> numbers;
+        private readonly IEnumerator<int> iterator;
 
         public StringRandomNumberGenerator(string input)
         {
             this.input = input;
+
+            numbers = input.Split(',', options: StringSplitOptions.RemoveEmptyEntries).Select(strNumber => int.Parse(strNumber));
+
+            iterator = numbers.GetEnumerator();
         }
 
         public int? Next()
         {
-            return int.Parse(input);
+            iterator.MoveNext();
+            return iterator.Current;
         }
     }
 }
