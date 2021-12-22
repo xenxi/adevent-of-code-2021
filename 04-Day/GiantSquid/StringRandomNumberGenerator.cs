@@ -2,14 +2,11 @@
 {
     public class StringRandomNumberGenerator : RandomNumberGenerator
     {
-        private readonly string input;
         private readonly IEnumerable<int> numbers;
         private readonly IEnumerator<int> iterator;
 
         public StringRandomNumberGenerator(string input)
         {
-            this.input = input;
-
             numbers = GetNumbers(input);
 
             iterator = numbers.GetEnumerator();
