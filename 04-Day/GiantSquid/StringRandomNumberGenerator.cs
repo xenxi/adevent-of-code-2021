@@ -15,7 +15,7 @@
         private static IEnumerable<int> GetNumbers(string input) 
             => input.Split(',', options: StringSplitOptions.RemoveEmptyEntries).Select(strNumber => int.Parse(strNumber));
 
-        public int? Next()
+        public int Next()
         {
             if (!iterator.MoveNext())
                 throw new InvalidOperationException();

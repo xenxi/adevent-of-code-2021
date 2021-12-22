@@ -14,13 +14,13 @@ public class BingoGame
 
     public void AddBoard(Board board) => _boards.Add(board);
 
-    public Board? Play()
+    public Board Play()
     {
         Board? winner = null;
         var number = numberGenerator.Next();
-        while (winner == null && number.HasValue)
+        while (winner == null)
         {
-            _boards.ForEach(board => board.Play(number.Value));
+            _boards.ForEach(board => board.Play(number));
             winner = _boards.FirstOrDefault(board => board.Bingo());
             number = numberGenerator.Next();
         }
