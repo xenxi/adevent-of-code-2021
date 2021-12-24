@@ -2,12 +2,12 @@
 
 public class Board : IEquatable<Board?>
 {
-    private readonly List<List<int>> lines;
+    private readonly List<List<int>> _lines;
     private List<int> calledNumbers = new List<int>();
 
-    public Board(int[,] numbers)
+    public static Board From(int[,] numbers)
     {
-        this.lines = new List<List<int>>();
+        var lines = new List<List<int>>();
         var numOfRows = numbers.GetLength(0);
         var numOfColumns = numbers.GetLength(1);
         for (int i = 0; i < numOfRows; i++)
@@ -18,11 +18,17 @@ public class Board : IEquatable<Board?>
 
             lines.Add(line);
         }
+        return new Board(lines);
+    }
+
+    public Board(List<List<int>> lines)
+    {
+        _lines = lines;
     }
 
     public bool Bingo()
     {
-        foreach (var line in lines)
+        foreach (var line in _lines)
         {
             if (line.All(number => calledNumbers.Contains(number)))
             {
@@ -40,7 +46,7 @@ public class Board : IEquatable<Board?>
     public bool Equals(Board? other)
     {
         return other != null 
-               && AllLinesAreEquals(lines, other.lines);
+               && AllLinesAreEquals(_lines, other._lines);
     }
 
     private bool AllLinesAreEquals(List<List<int>> lines1, List<List<int>> lines2)

@@ -17,7 +17,23 @@ namespace GiantSquid
 
         public IList<Board> GetAll()
         {
-            return new List<Board>() { new Board(new int[,] { { 22, 13, 17, 11, 0 }, { 8, 2, 23, 4, 24 }, { 21, 9, 14, 16, 7 }, { 6, 10, 3, 18, 5 }, { 1, 12, 20, 15, 19 } }) };
+            var strLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+            var lines = new List<List<int>>();
+            foreach (var line in strLines)
+            {
+                var strNumbersInLine = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                lines.Add(strNumbersInLine.Select(x => int.Parse(x)).ToList());
+            }
+            var boards = new List<Board>();
+            var group = lines.Take(5);
+
+            while (group.Any())
+            {
+                boards.Add(new Board(group.ToList()));
+                group = lines.Skip(5 * boards.Count).Take(5);
+            }
+
+            return boards;
         }
     }
 }
