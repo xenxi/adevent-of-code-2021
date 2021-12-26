@@ -5,6 +5,11 @@ public class Board : IEquatable<Board?>
     private readonly List<List<int>> _lines;
     private List<int> calledNumbers = new List<int>();
 
+    public Board(List<List<int>> lines)
+    {
+        _lines = lines;
+    }
+
     public static Board From(int[,] numbers)
     {
         var lines = new List<List<int>>();
@@ -21,9 +26,14 @@ public class Board : IEquatable<Board?>
         return new Board(lines);
     }
 
-    public Board(List<List<int>> lines)
+    public static bool operator !=(Board? left, Board? right)
     {
-        _lines = lines;
+        return !(left == right);
+    }
+
+    public static bool operator ==(Board? left, Board? right)
+    {
+        return EqualityComparer<Board>.Default.Equals(left, right);
     }
 
     public bool Bingo()
@@ -45,25 +55,8 @@ public class Board : IEquatable<Board?>
 
     public bool Equals(Board? other)
     {
-        return other != null 
+        return other != null
                && AllLinesAreEquals(_lines, other._lines);
-    }
-
-    private bool AllLinesAreEquals(List<List<int>> lines1, List<List<int>> lines2)
-    {
-       if(lines1.Count != lines2.Count)
-            return false;
-
-        for (int i = 0; i < lines1.Count; i++)
-        {
-            var line1 = lines1.ElementAt(i);
-            var line2 = lines2.ElementAt(i);
-
-            if(!line1.SequenceEqual(line2))
-                return false;
-        }
-
-        return true;
     }
 
     public void Play(int number)
@@ -71,13 +64,25 @@ public class Board : IEquatable<Board?>
         calledNumbers.Add(number);
     }
 
-    public static bool operator ==(Board? left, Board? right)
+    public int Score()
     {
-        return EqualityComparer<Board>.Default.Equals(left, right);
+        return 0;
     }
 
-    public static bool operator !=(Board? left, Board? right)
+    private bool AllLinesAreEquals(List<List<int>> lines1, List<List<int>> lines2)
     {
-        return !(left == right);
+        if (lines1.Count != lines2.Count)
+            return false;
+
+        for (int i = 0; i < lines1.Count; i++)
+        {
+            var line1 = lines1.ElementAt(i);
+            var line2 = lines2.ElementAt(i);
+
+            if (!line1.SequenceEqual(line2))
+                return false;
+        }
+
+        return true;
     }
 }

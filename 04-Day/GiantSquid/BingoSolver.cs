@@ -2,15 +2,24 @@
 
 public class BingoSolver
 {
-    private string input;
+    private readonly StringBoardRepository _boardRepository;
+    private readonly StringRandomNumberGenerator _randomNumberGenerator;
 
     public BingoSolver(string input)
     {
-        this.input = input;
+       _boardRepository = new StringBoardRepository(input);
+        _randomNumberGenerator = new StringRandomNumberGenerator(input);
     }
 
     public int CalculeWinnerScore()
     {
-        throw new NotImplementedException();
+        var game = new BingoGame(_randomNumberGenerator);
+
+        foreach (var board in _boardRepository.GetAll())
+            game.AddBoard(board);
+
+        var winner = game.Play();
+
+        return winner.Score();
     }
 }
