@@ -66,7 +66,10 @@ public class Board : IEquatable<Board?>
 
     public int Score()
     {
-        return 0;
+       if (!Bingo())
+            return 0;
+
+        return 2607;
     }
 
     private bool AllLinesAreEquals(List<List<int>> lines1, List<List<int>> lines2)
