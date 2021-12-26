@@ -1,4 +1,6 @@
-﻿namespace GiantSquid
+﻿using System.Text.RegularExpressions;
+
+namespace GiantSquid
 {
     public class StringRandomNumberGenerator : RandomNumberGenerator
     {
@@ -14,9 +16,11 @@
 
         private static IEnumerable<int> GetNumbers(string input)
         {
-            var stringNumbers = input.Split(',', options: StringSplitOptions.RemoveEmptyEntries);
-            var numbers = stringNumbers.Select(strNumber => int.TryParse(strNumber, out var number) ? number : (int?)null);
-            return numbers.Where(x => x.HasValue).Select(x => x.Value);
+            var firstLine = input.Split(Environment.NewLine).FirstOrDefault();
+            if(string.IsNullOrWhiteSpace(firstLine))
+                return Enumerable.Empty<int>();
+            var matches = Regex.Matches(firstLine, @"\d+");
+            return matches.Select(i => int.Parse(i.Value));
         }
 
         public int Next()
