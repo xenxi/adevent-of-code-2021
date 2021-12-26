@@ -9,16 +9,7 @@ namespace GiantSquid.Tests
     public class BoardShould 
     { 
         [Test]
-        public void have_0_as_initial_score()
-        {
-            var board = GivenAnyBoard();
-
-            var score = board.Score();
-
-            score.Should().Be(0);
-        }
-        [Test]
-        public void have_0_while_a_line_has_not_been_completed()
+        public void have_score_of_0_while_a_line_has_not_been_completed()
         {
             var board = GivenAnyBoard();
             foreach (var line in GivenAnyLines())
