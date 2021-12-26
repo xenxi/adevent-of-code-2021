@@ -12,8 +12,12 @@
             iterator = numbers.GetEnumerator();
         }
 
-        private static IEnumerable<int> GetNumbers(string input) 
-            => input.Split(',', options: StringSplitOptions.RemoveEmptyEntries).Select(strNumber => int.Parse(strNumber));
+        private static IEnumerable<int> GetNumbers(string input)
+        {
+            var stringNumbers = input.Split(',', options: StringSplitOptions.RemoveEmptyEntries);
+            var numbers = stringNumbers.Select(strNumber => int.TryParse(strNumber, out var number) ? number : (int?)null);
+            return numbers.Where(x => x.HasValue).Select(x => x.Value);
+        }
 
         public int Next()
         {

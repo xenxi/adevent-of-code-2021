@@ -6,6 +6,15 @@ namespace GiantSquid.Tests
 {
     public class StringRandomNumberGeneratorShould
     {
+        [TestCase("2,5,1,2,3d,8", 2, 5,1,2,8)]
+        [TestCase("2,5,1,asdf,3d,8", 2, 5,1,8)]
+        public void ignore_numbers_with_invalid_format(string input, params int[] expectedNumbers)
+        {
+            var generator = new StringRandomNumberGenerator(input);
+
+            foreach (var expectedNumber in expectedNumbers)
+                generator.Next().Should().Be(expectedNumber);
+        }
         [TestCase("1", 1)]
         [TestCase("2", 2)]
         [TestCase("5", 5)]
