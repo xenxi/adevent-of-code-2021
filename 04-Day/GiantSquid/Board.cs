@@ -69,7 +69,10 @@ public class Board : IEquatable<Board?>
        if (!Bingo())
             return 0;
 
-        return 2607;
+        var unmarkedNumbers = _lines.SelectMany(line => line).Where(number => !calledNumbers.Contains(number));
+        int score = unmarkedNumbers.Sum() * calledNumbers.Last();
+
+        return score;
     }
 
     private bool AllLinesAreEquals(List<List<int>> lines1, List<List<int>> lines2)
