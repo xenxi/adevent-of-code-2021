@@ -6,14 +6,16 @@ namespace GiantSquid.Tests
 {
     public class StringRandomNumberGeneratorShould
     {
-        [Test]
-        public void read_only_first_line_of_string()
+        [TestCase("1\r\n\r\n22 15",1)]
+        [TestCase("2\r\n33,22",2)]
+        [TestCase("21\n33,22",21)]
+        public void read_only_first_line_of_string(string input,  int expectedNumber)
         {
-            var generator = new StringRandomNumberGenerator("1\r\n\r\n22 15");
-              
-            var number = generator.Next();
+            var generator = new StringRandomNumberGenerator(input);
 
-            number.Should().Be(1);
+            generator.Next().Should().Be(expectedNumber);
+            Action action = () => generator.Next();
+            action.Should().Throw<Exception>();
         }
 
         [TestCase("2,5,1,2,3d,8", 2, 5,1,3,2,8)]
