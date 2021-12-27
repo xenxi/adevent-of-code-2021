@@ -11,7 +11,8 @@ public class StringBoardRepository
 
     public IList<Board> GetAll()
     {
-        var strLines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+        var separator = new string[] { "\r\n", "\n" };
+        var strLines = input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
         var lines = new List<List<int>>();
         foreach (var line in strLines)
         {

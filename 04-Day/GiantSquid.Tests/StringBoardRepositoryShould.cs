@@ -17,10 +17,10 @@ namespace GiantSquid.Tests
             var expectedBoard = GivenAnyBoard();
             boards.Should().OnlyContain(board => board == expectedBoard);
         }
-        [Test]
-        public void return_a_board_ignore_rolls()
+        [TestCase("7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1\r\n\r\n22 13 17 11  0\r\n 8  2 23  4 24\r\n21  9 14 16  7\r\n 6 10  3 18  5\r\n 1 12 20 15 19")]
+        [TestCase("7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1\n22 13 17 11  0\r\n 8  2 23  4 24\r\n21  9 14 16  7\r\n 6 10  3 18  5\r\n 1 12 20 15 19")]
+        public void return_a_board_ignore_rolls(string input)
         {
-            var input = "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1\r\n\r\n22 13 17 11  0\r\n 8  2 23  4 24\r\n21  9 14 16  7\r\n 6 10  3 18  5\r\n 1 12 20 15 19";
             var generator = new StringBoardRepository(input);
 
             var boards = generator.GetAll();
