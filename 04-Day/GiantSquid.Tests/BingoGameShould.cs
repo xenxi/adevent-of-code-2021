@@ -20,7 +20,7 @@ namespace GiantSquid.Tests
         }
 
         [Test]
-        public void return_winner_board()
+        public void return_winner_board_when_all_numbers_in_a_row_have_been_called()
         {
             var aGivenBoard = GivenAnyBoard();
             game.AddBoard(aGivenBoard);
