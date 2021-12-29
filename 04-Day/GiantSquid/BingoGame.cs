@@ -21,12 +21,13 @@ public class BingoGame
         var number = numberGenerator.Next();
         while (winner == null)
         {
+            if (playedNumbers.Contains(number))
+                throw new DuplicateNumberException();
+
             playedNumbers.Add(number);
             _boards.ForEach(board => board.Play(number));
             winner = _boards.FirstOrDefault(board => board.Bingo());
             number = numberGenerator.Next();
-            if (playedNumbers.Contains(number))
-                throw new DuplicateNumberException();
         }
 
         return winner;

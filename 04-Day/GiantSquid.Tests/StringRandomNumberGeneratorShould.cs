@@ -18,7 +18,7 @@ namespace GiantSquid.Tests
             action.Should().Throw<Exception>();
         }
 
-        [TestCase("2,5,1,2,3d,8", 2, 5,1,3,2,8)]
+        [TestCase("2,5,1,2,3d,8", 2, 5,1,2,3,8)]
         [TestCase("2,5,1,asdf,3d,8", 2, 5,1,3,8)]
         public void ignore_numbers_with_invalid_format(string input, params int[] expectedNumbers)
         {

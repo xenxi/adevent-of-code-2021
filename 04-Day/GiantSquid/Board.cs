@@ -35,12 +35,36 @@ public class Board : IEquatable<Board?>
     {
         return EqualityComparer<Board>.Default.Equals(left, right);
     }
+    private List<List<int>> GetColumns() 
+    {
+        var columns = new List<List<int>>();
 
+        for (int columnIndex = 0; columnIndex < 5; columnIndex++)
+        {
+            var column = new List<int>();
+            for (int rowIndex = 0; rowIndex < 5; rowIndex++)
+            {
+                var number = _lines.ElementAt(rowIndex).ElementAt(columnIndex);
+                column.Add(number);
+            }
+            columns.Add(column);
+        }
+
+        return columns;
+    }
     public bool Bingo()
     {
         foreach (var line in _lines)
         {
             if (line.All(number => calledNumbers.Contains(number)))
+            {
+                return true;
+            }
+        }
+
+        foreach (var column in GetColumns())
+        {
+            if (column.All(number => calledNumbers.Contains(number)))
             {
                 return true;
             }
