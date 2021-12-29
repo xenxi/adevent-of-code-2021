@@ -31,6 +31,17 @@ namespace GiantSquid.Tests
             winner.Should().Be(aGivenBoard);
         }
         [Test]
+        public void return_winner_board_when_all_numbers_in_a_column_have_been_called()
+        {
+            var aGivenBoard = GivenAnyBoard();
+            game.AddBoard(aGivenBoard);
+            numberGenerator.Next().Returns(22, 8, 21, 6, 1);
+
+            var winner = game.Play();
+
+            winner.Should().Be(aGivenBoard);
+        }
+        [Test]
         public void return_second_board_as_the_winner()
         {
             var firtsBoard = GivenAnyBoard();
