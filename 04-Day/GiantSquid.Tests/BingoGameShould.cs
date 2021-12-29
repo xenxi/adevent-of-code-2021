@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
+using System;
 
 namespace GiantSquid.Tests
 {
@@ -29,6 +30,17 @@ namespace GiantSquid.Tests
             var winner = game.Play();
 
             winner.Should().Be(aGivenBoard);
+        }
+        [Test]
+        public void not_allow_playing_the_same_number_twice()
+        {
+            var aGivenBoard = GivenAnyBoard();
+            game.AddBoard(aGivenBoard);
+            numberGenerator.Next().Returns(1, 1);
+
+            Action action = () => game.Play();
+
+            action.Should().Throw<DuplicateNumberException>();
         }
         [Test]
         public void return_winner_board_when_all_numbers_in_a_column_have_been_called()

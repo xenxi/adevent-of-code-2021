@@ -17,12 +17,16 @@ public class BingoGame
     public Board Play()
     {
         Board? winner = null;
+        var playedNumbers = new List<int>();
         var number = numberGenerator.Next();
         while (winner == null)
         {
+            playedNumbers.Add(number);
             _boards.ForEach(board => board.Play(number));
             winner = _boards.FirstOrDefault(board => board.Bingo());
             number = numberGenerator.Next();
+            if (playedNumbers.Contains(number))
+                throw new DuplicateNumberException();
         }
 
         return winner;
