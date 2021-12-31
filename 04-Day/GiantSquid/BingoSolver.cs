@@ -22,4 +22,9 @@ public class BingoSolver
 
         return winner.Score();
     }
+
+    public object CalculeLoserScore()
+    {
+        throw new NotImplementedException();
+    }
 }
