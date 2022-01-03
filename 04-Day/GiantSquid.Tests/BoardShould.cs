@@ -12,7 +12,7 @@ namespace GiantSquid.Tests
         public void have_score_of_0_while_a_line_has_not_been_completed()
         {
             var board = GivenAnyBoard();
-            foreach (var line in GivenAnyLines())
+            foreach (var line in GivenAnyLines().Take(4))
             {
                 foreach (var number in line.Take(4))
                 {

@@ -18,13 +18,20 @@ public class BingoSolver
         foreach (var board in _boardRepository.GetAll())
             game.AddBoard(board);
 
-        var winner = game.Play();
+        var playedBoards = game.Play();
 
-        return winner.Score();
+        return playedBoards.First().Score();
     }
 
-    public object CalculeLoserScore()
+    public int CalculeLoserScore()
     {
-        throw new NotImplementedException();
+        var game = new BingoGame(_randomNumberGenerator);
+
+        foreach (var board in _boardRepository.GetAll())
+            game.AddBoard(board);
+
+        var playedBoards = game.Play();
+
+        return playedBoards.Last().Score();
     }
 }

@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Linq;
 
 namespace GiantSquid.Tests
 {
@@ -27,9 +28,9 @@ namespace GiantSquid.Tests
             game.AddBoard(aGivenBoard);
             numberGenerator.Next().Returns(22, 13, 17, 11, 0);
 
-            var winner = game.Play();
+            var playedBoars = game.Play();
 
-            winner.Should().Be(aGivenBoard);
+            playedBoars.Should().OnlyContain(b => b == aGivenBoard);
         }
         [Test]
         public void not_allow_playing_the_same_number_twice()
@@ -49,9 +50,9 @@ namespace GiantSquid.Tests
             game.AddBoard(aGivenBoard);
             numberGenerator.Next().Returns(22, 8, 21, 6, 1);
 
-            var winner = game.Play();
+            var playedBoards = game.Play();
 
-            winner.Should().Be(aGivenBoard);
+            playedBoards.Should().OnlyContain(b => b == aGivenBoard);
         }
         [Test]
         public void return_second_board_as_the_winner()
@@ -62,7 +63,7 @@ namespace GiantSquid.Tests
             game.AddBoard(secondBoard);
             numberGenerator.Next().Returns(3, 15, 0, 2, 22);
            
-            var winner = game.Play();
+            var winner = game.Play().First();
 
             winner.Should().Be(secondBoard);
         }
