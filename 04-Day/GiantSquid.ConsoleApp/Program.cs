@@ -6,8 +6,9 @@ var input = File.ReadAllText("input.txt");
 Print(input);
 
 var bingoSolver = new BingoSolver(input);
-var winnerScore = bingoSolver.CalculeWinnerScore();
-Print($"Winner score: {winnerScore}");
+
+//Print($"Winner score: {bingoSolver.CalculeWinnerScore()}");
+Print($"Loser score: {bingoSolver.CalculeLoserScore()}");
 
 static void Print(string text, bool highlight = false)
 {

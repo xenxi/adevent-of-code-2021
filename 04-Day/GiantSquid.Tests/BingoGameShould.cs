@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GiantSquid.Tests
@@ -31,6 +32,17 @@ namespace GiantSquid.Tests
             var playedBoars = game.Play();
 
             playedBoars.Should().OnlyContain(b => b == aGivenBoard);
+        }
+        [Test]
+        public void return_the_boards_in_order_when_they_win_in_the_same_turn() 
+        {
+            var boards = new List<Board> { GivenAnyBoard(), GivenAnyBoard() };
+            boards.ForEach(board => game.AddBoard(board));
+            numberGenerator.Next().Returns(22, 13, 17, 11, 0);
+
+            var playedBoars = game.Play();
+
+            playedBoars.Should().BeEquivalentTo(boards);
         }
         [Test]
         public void not_allow_playing_the_same_number_twice()

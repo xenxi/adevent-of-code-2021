@@ -27,12 +27,12 @@ public class BingoGame
 
             playedNumbers.Add(number);
             boardsToSolve.ForEach(board => board.Play(number));
-            var winner = boardsToSolve.FirstOrDefault(board => board.Bingo());
 
-            if (winner != null)
+            var winners = boardsToSolve.Where(board => board.Bingo()).ToList();
+            foreach (var winner in winners)
             {
                 boardsToSolve.Remove(winner);
-                yield return winner;    
+                yield return winner;
                 solvedBoards.Add(winner);
             }
         }
