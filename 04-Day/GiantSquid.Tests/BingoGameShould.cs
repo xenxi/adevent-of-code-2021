@@ -39,7 +39,7 @@ namespace GiantSquid.Tests
             game.AddBoard(aGivenBoard);
             numberGenerator.Next().Returns(1, 1);
 
-            Action action = () => game.Play();
+            Action action = () => game.Play().ToList();
 
             action.Should().Throw<DuplicateNumberException>();
         }

@@ -4,12 +4,12 @@ public class Board : IEquatable<Board?>
 {
     private readonly List<List<int>> _lines;
     private List<int> calledNumbers = new List<int>();
-
     public Board(List<List<int>> lines)
     {
         _lines = lines;
     }
 
+    private string _numbers => string.Join(' ', _lines.SelectMany(x => x));
     public static Board From(int[,] numbers)
     {
         var lines = new List<List<int>>();
@@ -26,32 +26,10 @@ public class Board : IEquatable<Board?>
         return new Board(lines);
     }
 
-    public static bool operator !=(Board? left, Board? right)
-    {
-        return !(left == right);
-    }
+    public static bool operator !=(Board? left, Board? right) => !(left == right);
 
-    public static bool operator ==(Board? left, Board? right)
-    {
-        return EqualityComparer<Board>.Default.Equals(left, right);
-    }
-    private List<List<int>> GetColumns() 
-    {
-        var columns = new List<List<int>>();
+    public static bool operator ==(Board? left, Board? right) => EqualityComparer<Board>.Default.Equals(left, right);
 
-        for (int columnIndex = 0; columnIndex < 5; columnIndex++)
-        {
-            var column = new List<int>();
-            for (int rowIndex = 0; rowIndex < 5; rowIndex++)
-            {
-                var number = _lines.ElementAt(rowIndex).ElementAt(columnIndex);
-                column.Add(number);
-            }
-            columns.Add(column);
-        }
-
-        return columns;
-    }
     public bool Bingo()
     {
         foreach (var line in _lines)
@@ -72,15 +50,15 @@ public class Board : IEquatable<Board?>
         return false;
     }
 
-    public override bool Equals(object? obj)
-    {
-        return Equals(obj as Board);
-    }
+    public override bool Equals(object? obj) => Equals(obj as Board);
 
-    public bool Equals(Board? other)
-    {
-        return other != null
+    public bool Equals(Board? other) => other != null
                && AllLinesAreEquals(_lines, other._lines);
+
+    public override int GetHashCode()
+    {
+        var numbers = _lines.SelectMany(x => x).ToList();
+        return HashCode.Combine(string.Join(',', numbers));
     }
 
     public void Play(int number)
@@ -90,7 +68,7 @@ public class Board : IEquatable<Board?>
 
     public int Score()
     {
-       if (!Bingo())
+        if (!Bingo())
             return 0;
 
         var unmarkedNumbers = _lines.SelectMany(line => line).Where(number => !calledNumbers.Contains(number));
@@ -114,5 +92,23 @@ public class Board : IEquatable<Board?>
         }
 
         return true;
+    }
+
+    private List<List<int>> GetColumns()
+    {
+        var columns = new List<List<int>>();
+
+        for (int columnIndex = 0; columnIndex < 5; columnIndex++)
+        {
+            var column = new List<int>();
+            for (int rowIndex = 0; rowIndex < 5; rowIndex++)
+            {
+                var number = _lines.ElementAt(rowIndex).ElementAt(columnIndex);
+                column.Add(number);
+            }
+            columns.Add(column);
+        }
+
+        return columns;
     }
 }

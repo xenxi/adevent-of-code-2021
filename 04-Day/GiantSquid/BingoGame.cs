@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GiantSquid;
+﻿namespace GiantSquid;
 
 public class BingoGame
 {
@@ -16,7 +14,7 @@ public class BingoGame
 
     public void AddBoard(Board board) => _boards.Add(board);
 
-    public IList<Board> Play()
+    public IEnumerable<Board> Play()
     {
         var solvedBoards = new List<Board>();
         var boardsToSolve = Boards.ToList();
@@ -28,16 +26,17 @@ public class BingoGame
                 throw new DuplicateNumberException();
 
             playedNumbers.Add(number);
-            _boards.ForEach(board => board.Play(number));
-           var winner = _boards.FirstOrDefault(board => board.Bingo());
+            boardsToSolve.ForEach(board => board.Play(number));
+            var winner = boardsToSolve.FirstOrDefault(board => board.Bingo());
 
-            if (winner != null) 
+            if (winner != null)
             {
                 boardsToSolve.Remove(winner);
-               solvedBoards.Add( winner);
+                yield return winner;    
+                solvedBoards.Add(winner);
             }
         }
 
-        return solvedBoards;
+        //return solvedBoards;
     }
 }
